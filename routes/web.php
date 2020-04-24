@@ -23,3 +23,6 @@ Route::get('leo/romero/{name}', function ($name) {
    // return view('hola');
     return "feliz cumpleaños $name";
 });
+Route::get('paciente','FichaClienteController@index')->name('paciente.index');
+Route::get('paciente/create','FichaClienteController@create')->name('paciente.create');
+Route::post('paciente','FichaClienteController@store')->name('paciente.store');
