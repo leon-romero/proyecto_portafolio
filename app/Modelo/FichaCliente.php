@@ -18,4 +18,9 @@ class FichaCliente extends Authenticatable
     public function comuna(){
         return $this->belongsTo(Comuna::class,'id_comuna');
     }
+
+    public function nombre_completo(){
+        return $this->nombres . " " . $this->apellidos;
+    }
+
 }

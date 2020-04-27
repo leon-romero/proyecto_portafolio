@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Modelo\FichaCliente;
 use App\Modelo\Comuna;
+use App\Modelo\Region;
+
 
 
 class FichaClienteController extends Controller
@@ -17,8 +19,8 @@ class FichaClienteController extends Controller
     public function index()
     {
         $pacientes=FichaCliente::all();    
-      //  return $pacientes;
-        return view('paciente.index',compact('pacientes'));
+         //  return $pacientes;
+        return view('admin.paciente.index',compact('pacientes'));
     }
 
     /**
@@ -29,7 +31,8 @@ class FichaClienteController extends Controller
     public function create()
     {
         $comunas=Comuna::all();
-        return view('paciente.create',compact('comunas'));
+        $regiones = Region::all();
+        return view('admin.paciente.create',compact('comunas','regiones'));
     }
 
     /**
@@ -40,34 +43,30 @@ class FichaClienteController extends Controller
      */
     public function store(Request $request)
     {
-        //return $request;
-        $fc = new FichaCliente();
-        $fc->username=$request->input('run');
-        $fc->password='12345';
-        $fc->run=$request->input('run');
-        $fc->nombres=$request->input('nombre');
-        $fc->apellidos='';
-        $fc->telefono='';
-        $fc->correo=$request->input('correo');
-        $fc->id_comuna=$request->input('id_comuna');
-        $fc->direccion='';
-        $fc->bloqueo=0;
-        $fc->activo=1;
-        $fc->save();
+        try {
+            // return $request;
+            $fc = new FichaCliente();
+            $fc->username    =  $request->input('run');
+            $fc->password    = '12345';
+            $fc->run         = $request->input('run');
+            $fc->nombres     = $request->input('nombres');
+            $fc->apellidos   = $request->input('apellidos');
+            $fc->telefono    = $request->input('telefono');
+            $fc->correo      = $request->input('correo');
+            $fc->id_comuna   = $request->input('id_comuna');
+            $fc->direccion   = $request->input('direccion');
+            $fc->bloqueo     = 0;
+            $fc->activo      = 1;
+            $fc->save();
+            return redirect()->route('paciente.index')->with('success','Se ha creador correctamente.');
+
+        } catch (\Throwable $th) {
+            // return $th;
+
+            return back()->with('info','Error Intente nuevamente.');
+        }
+      
      
-
-
-        // $table->string('username', 60)->unique();
-        // $table->string('password', 64);
-        // $table->string('run', 15)->unique();
-        // $table->string('nombres', 100);
-        // $table->string('apellidos', 100);
-        // $table->string('telefono', 60)->nullable();
-        // $table->string('correo', 100)->unique();
-        // $table->integer('id_comuna');
-        // $table->text('direccion');
-        // $table->integer('bloqueo');
-        // $table->integer('activo');
     }
 
     /**
@@ -87,10 +86,30 @@ class FichaClienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($rut)
     {
-        //
+        try {
+            $comunas=Comuna::all();
+            $regiones = Region::all();
+            $p = FichaCliente::where('run',$rut)->firstOrFail();
+            return view('admin.paciente.edit',compact('p','comunas','regiones'));
+        } catch (\Throwable $th) {
+            // return $th;
+            return redirect()->route('paciente.index')->with('info','Error intente nuevamente.');
+
+        }
+      
     }
+
+    public function documento($rut)
+    {
+        $comunas=Comuna::all();
+        $regiones = Region::all();
+        $p = FichaCliente::where('run',$rut)->firstOrFail();
+        return view('admin.paciente.documento.index',compact('p','comunas','regiones'));
+    }
+
+    
 
     /**
      * Update the specified resource in storage.
@@ -99,9 +118,28 @@ class FichaClienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $rut)
     {
-        //
+        try {
+            $fc = FichaCliente::where('run',$rut)->firstOrFail();
+            $fc->username    =  $request->input('run');
+            // $fc->password    = '12345';
+            $fc->run         = $request->input('run');
+            $fc->nombres     = $request->input('nombres');
+            $fc->apellidos   = $request->input('apellidos');
+            $fc->telefono    = $request->input('telefono');
+            $fc->correo      = $request->input('correo');
+            $fc->id_comuna   = $request->input('id_comuna');
+            $fc->direccion   = $request->input('direccion');
+            // $fc->bloqueo     = 0;
+            // $fc->activo      = 1;
+            $fc->update();
+            return back()->with('success','Se ha actualizado correctamente.');
+        } catch (\Throwable $th) {
+            return back()->with('danger','Error Intente nuevamente.');
+        }
+
+      
     }
 
     /**
