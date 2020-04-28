@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+
 use App\Modelo\FichaCliente;
 use App\Modelo\Comuna;
 use App\Modelo\Region;
-
-
+use App\Modelo\Documento;
+use App\Modelo\DetalleDocumento;
 
 class FichaClienteController extends Controller
 {
@@ -103,13 +105,34 @@ class FichaClienteController extends Controller
 
     public function documento($rut)
     {
-        $comunas=Comuna::all();
-        $regiones = Region::all();
+        $documentos = Documento::all();
         $p = FichaCliente::where('run',$rut)->firstOrFail();
-        return view('admin.paciente.documento.index',compact('p','comunas','regiones'));
+        $documentos_paciente = DetalleDocumento::where('id_ficha_cliente',$p->id_ficha_cliente)->get();
+        return view('admin.paciente.documento.index',compact('p','documentos','documentos_paciente'));
+    }
+
+    public function eliminarDocumento($id_docuemento){
+        $d = DetalleDocumento::findOrFail($id_docuemento);   
+        Storage::delete($d->ruta);
+        $d->delete();
+        return back()->with('success','Se ha eliminado correctamente.');
     }
 
     
+    public function subirDocumento(Request $request,$rut){
+        
+        // $file = $request->file('archivo');    
+        // $nombre = $file->getClientOriginalName();    
+
+        $p = FichaCliente::where('run',$rut)->firstOrFail();
+        $detalle = new DetalleDocumento();
+        $detalle->id_ficha_cliente = $p->id_ficha_cliente;
+        $detalle->id_documento = $request->input('id_documento');
+        $detalle->ruta = $request->file('archivo')->store('public');   //uid
+        $detalle->save();
+        return back()->with('success','Se ha creado correctamente.');
+    
+    }
 
     /**
      * Update the specified resource in storage.

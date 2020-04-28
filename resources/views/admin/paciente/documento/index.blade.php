@@ -24,25 +24,71 @@
         <br>
         <br>
         <div class="box-body table-responsive">
-          <table id="tabla" class="datatable table table-striped table-sm " cellspacing="0" width="100%">
+          <table class="datatable table table-striped table-sm " cellspacing="0" width="100%">
             <thead>
               <tr>
-                <th>#</th>
                 <th>Nombre Documento</th>
+                <th></th>
                 <th></th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
+              
+                @foreach ($documentos_paciente as $dp)    
+                <tr>       
+                  <td>{{ $dp->documento->nombre_documento }}</td>
+                  <td>
+                    <a href="{{ Storage::url($dp->ruta) }}" target="_blink" class="btn btn-info">Ver documento</a>
+                  </td>
+                  <td>
+                    <a href="{{ route('paciente.documento.delete',$dp->id_detalle_documento) }}" class="btn btn-danger"></i>Eliminar</a>	
+                  </td>
+                  
+                </tr>
+                @endforeach
             </tbody>
           </table>
         </div>
       </div>
     </div>
+    <div class="col-md-6">
+      <!-- Horizontal Form -->
+      <div class="box box-danger">
+          <div class="box-header with-border">
+              <h3 class="box-title">inscripción Documento</h3>
+              <br>
+              {{-- <small>(El RUN será el usuario del paciente)</small> --}}
+          </div>
+          <!-- /.box-header -->
+          <!-- form start -->
+          <form class="form-horizontal" method="post" action="{{ route('paciente.documento.store',$p->run) }}" enctype="multipart/form-data">
+              @csrf
+              <div class="box-body">              
+                <div class="row form-group">
+                  <label class="col-sm-2 control-label">Documento</label>
+                  <div class="col-sm-6">
+                    <select class="form-control" id="id_documento" name="id_documento">
+                      
+                      @foreach ($documentos as $d)
+                        <option value="{{ $d->id_documento }}">{{ $d->nombre_documento }}</option>   
+                      @endforeach                     
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+
+									<input type="file" name="archivo" class="form-control-file" accept="application/pdf" required >
+									
+								</div>
+              </div>
+              <!-- /.box-body -->
+              <div class="box-footer">
+                  <button type="submit" class="btn btn-success pull-right">Agregar</button>
+              </div>
+          </form>
+      </div>
+
+  </div>
   </div>
 </section>
 @stop
