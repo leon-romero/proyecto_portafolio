@@ -21,24 +21,19 @@
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">Menú</li>
       <li><a href="/home"><i class="fa fa-home text-red"></i> <span>Home</span></a></li>   
-      <li class="treeview  {{ activar('paciente*') }}{{ activar('odontologo*') }}{{ activar('empleado*') }}">
+
+      <li class="treeview {{ activar('paciente*') }}{{ activar('odontologo*') }}{{ activar('empleado*') }}{{ activar('proveedor*') }}">
         <a>
-          <i class="fa fa-shopping-cart"></i> <span>Usuarios</span>
+          <i class="fa fa-users"></i> <span>Usuarios</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
         </a>
-        <ul class="treeview-menu">        
+        <ul class="treeview-menu">           
           <li class="{{ activar('paciente*') }}"><a href="{{ route('paciente.index') }}"><i class="fa fa-shopping-cart"></i>Paciente</a></li>
-        </ul>
-        <ul class="treeview-menu">        
           <li class="{{ activar('odontologo*') }}"><a href=""><i class="fa fa-shopping-cart"></i>Odontologo</a></li>
-        </ul>
-        <ul class="treeview-menu">        
-          <li class="{{ activar('empleado*') }}"><a href=""><i class="fa fa-shopping-cart"></i>Empleado</a></li>
-        </ul>
-        <ul class="treeview-menu">        
-          <li class="{{ activar('proveedor*') }}"><a href="{{ route('proveedor.index') }}"><i class="fa fa-shopping-cart"></i>Proveedor</a></li>
+          <li class="{{ activar('empleado*') }}"><a href=""><i class="fa fa-shopping-cart"></i>Empleado</a></li>      
+          <li class="{{ activar('proveedor*') }}"><a href="{{ route('proveedor.index') }}"><i class="fas fa-tooth"></i>Proveedor</a></li>
         </ul>
       </li>
       {{-- <li class="treeview {{ activar('pendientes*') }}{{ activar('pedidosfecha*') }}{{ activar('pedidoscodigo*') }}">
@@ -72,8 +67,8 @@
           <li class="{{ activar('proveedores*') }}"><a href=""><i class="fa fa-cubes"></i>Proveedores</a></li>
           <li class="{{ activar('administradores*') }}"><a href=""><i class="fa fa-desktop"></i>Administradores</a></li>
         </ul>
-      </li> --}}
-      {{-- <li class="treeview {{ activar('canastas*') }} ">
+      </li>
+      <li class="treeview {{ activar('canastas*') }} ">
         <a>
           <i class="fa fa-shopping-basket"></i> <span>Canastas</span>
           <span class="pull-right-container">
@@ -109,8 +104,8 @@
           <li class="{{ activar('tipocanastas*') }}"><a href=""><i class="glyphicon glyphicon-list-alt"></i>Tipos de Canastas</a></li>
           <li class="{{ activar('unidades*') }}"><a href=""><i class="fa fa-calculator"></i>Unidades</a></li>
         </ul>
-      </li> --}}
-      {{-- <li class="treeview">
+      </li>
+      <li class="treeview">
         <a>
           <i class="fa fa-bar-chart"></i> <span>Estadísticas</span>
           <span class="pull-right-container">
@@ -122,6 +117,7 @@
          <li class=""><a href=""><i class="fa fa-money"></i>Movimientos</a></li>
         </ul>
       </li>    --}}
+
       <li><a href="/"><i class="fa fa-sign-out"></i> <span>Salir</span></a></li>    
     </ul>
   </section>

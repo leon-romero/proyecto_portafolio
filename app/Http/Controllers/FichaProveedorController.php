@@ -97,7 +97,7 @@ class FichaProveedorController extends Controller
     public function update(Request $request, $id)
     {
         try {
-            $fp = FichaProveedor::where('nombre_proveedor',$nombre_proveedor)->firstOrFail();
+            $fp = FichaProveedor::where('id_ficha_proveedor',$id)->firstOrFail();
             $fp->username               =  $request->input('username');
             //$fp->password               = '12345';
             $fp->nombre_empresa         = $request->input('nombre_empresa');
@@ -109,6 +109,7 @@ class FichaProveedorController extends Controller
             $fp->update();
             return back()->with('success','Se ha actualizado correctamente.');
         } catch (\Throwable $th) {
+            return $th;
             return back()->with('danger','Error Intente nuevamente.');
         }
     }

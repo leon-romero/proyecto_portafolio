@@ -19,7 +19,8 @@
   <link rel="icon" type="image/ico" href="/favicon.ico">
   <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css">
+  <script src="https://kit.fontawesome.com/aef2b90f5f.js" crossorigin="anonymous"></script>
+  {{-- <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css"> --}}
   <!-- Theme style -->
   <link rel="stylesheet" href="/dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="/dist/css/skins/_all-skins.min.css">
