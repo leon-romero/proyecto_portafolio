@@ -2,7 +2,7 @@
 
 @section('contenido')
 <section class="content-header">
-  <h1>Lista de Pacientes</h1>
+  <h1>Lista de Empleados</h1>
   {{-- <ol class="breadcrumb"> --}}
     {{-- <li><a href=""><i class="fa fa-home"></i> Home</a></li> --}}
     {{-- <li class="active">Clientes</li> --}}
@@ -18,10 +18,10 @@
     <div class="col-md-12">
       <div class="box">
         <div class="box-header">
-          <h3 class="box-title">Todos los Pacientes</h3>
+          <h3 class="box-title">Todos los Empleados</h3>
         </div>
         <div class="col-md-12 text-center">
-          <a href="{{ route('paciente.create')}}" class="btn btn-success btn-sm"><i class="fa fa-user-plus"></i> Nuevo Paciente</a>
+          <a href="{{ route('empleado.create')}}" class="btn btn-success btn-sm"><i class="fa fa-user-plus"></i> Nuevo Empleado</a>
         </div>
         <br>
         <br>
@@ -39,22 +39,19 @@
               </tr>
             </thead>
             <tbody>
-              @if (count($pacientes)>0 )
+              @if (count($empleados)>0 )
               @php
                   $i=1;
               @endphp  
-              @foreach ($pacientes as $p)
+              @foreach ($empleados as $e)
                 <tr>
                   <td>{{ $i++ }}</td>
-                  <td>{{ $p->run }}</td>
-                  <td>{{ $p->nombre_completo() }}</td>
-                  <td>{{ $p->correo }}</td>
+                  <td>{{ $e->run }}</td>
+                  <td>{{ $e->nombre_completo() }}</td>
+                  <td>{{ $e->correo }}</td>
                   <td>
-                    <a href="{{ route('paciente.documento.index',$p->run) }}" class="btn btn-danger btn-sm">Documento 
-                      {{-- <i class="fa fa-file"></i> --}}
-                    </a>
                     {{-- <a href="" class="btn btn-primary btn-sm">Direcciones <i class="fa fa-home"></i></a> --}}
-                    <a href="{{ route('paciente.edit',$p->run) }}" class="btn btn-info btn-sm">Editar <i class="fa fa-edit"></i></a>
+                    <a href="{{ route('empleado.edit',$e->run) }}" class="btn btn-info btn-sm">Editar <i class="fa fa-edit"></i></a>
                   </td>
                 </tr>
                 @endforeach

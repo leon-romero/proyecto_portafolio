@@ -32,7 +32,7 @@
         <ul class="treeview-menu">           
           <li class="{{ activar('paciente*') }}"><a href="{{ route('paciente.index') }}"><i class="fa fa-shopping-cart"></i>Paciente</a></li>
           <li class="{{ activar('odontologo*') }}"><a href=""><i class="fa fa-shopping-cart"></i>Odontologo</a></li>
-          <li class="{{ activar('empleado*') }}"><a href=""><i class="fa fa-shopping-cart"></i>Empleado</a></li>      
+          <li class="{{ activar('empleado*') }}"><a href="{{ route('empleado.index') }}"><i class="fa fa-shopping-cart"></i>Empleado</a></li>      
           <li class="{{ activar('proveedor*') }}"><a href="{{ route('proveedor.index') }}"><i class="fas fa-tooth"></i>Proveedor</a></li>
         </ul>
       </li>

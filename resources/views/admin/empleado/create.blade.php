@@ -6,7 +6,7 @@
 @section('contenido')
 
   <section class="content-header">
-    <h1>Crear paciente</h1>
+    <h1>Crear empleado</h1>
   </section>
   <section class="content">
     <div class="row">
@@ -16,9 +16,9 @@
             <!-- Horizontal Form -->
             <div class="box box-danger">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Formulario de inscripción Pacientes</h3>
+                    <h3 class="box-title">Formulario de inscripción Empleado</h3>
                     <br>
-                    <small>(El RUN será el usuario del paciente)</small>
+                    <small>(El RUN será el usuario del empleado)</small>
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
@@ -56,31 +56,29 @@
                             </div>
                         </div>
                         
-                        <div class="row form-group">
-                            <label class="col-sm-2 control-label">Región</label>
+                        {{-- <div class="row form-group">
+                            <label class="col-sm-2 control-label">Tipo Cliente</label>
                             <div class="col-sm-6">
                                 <select class="form-control" id="select_region" name="region" onChange="CargarComunas()">   
                                 </select>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="row form-group">
-                            <label class="col-sm-2 control-label">Comuna</label>
-                            <div class="col-sm-10">
-                                
-                                <select class="form-control {{ $errors->has('id_comuna') ? 'is-invalid' : '' }}" name='id_comuna' id="select_comuna">
-                                </select>
-                                {!! $errors->first('id_comuna', ' <small id="inputPassword" class="form-text text-danger">:message</small>') !!}
-                            </div>
-                        </div>
 
-                        <div class="row form-group">
-                            <label class="col-sm-2 control-label">direccion</label>
-                            <div class="col-sm-10">
-                                <textarea class="form-control" rows="3" name="direccion" placeholder="..." required></textarea>
+                        <div class="form-group" data-select2-id="13">
+                            <label>Minimal</label>
+                            <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
+                                <option selected="selected" data-select2-id="3">Alabama</option>
+                                <option data-select2-id="19">Alaska</option>
+                                <option data-select2-id="20">California</option>
+                                <option data-select2-id="21">Delaware</option>
+                                <option data-select2-id="22">Tennessee</option>
+                                <option data-select2-id="23">Texas</option>
+                                <option data-select2-id="24">Washington</option>
+                            </select><span class="select2 select2-container select2-container--default select2-container--below select2-container--focus" dir="ltr" data-select2-id="2" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-uoym-container"><span class="select2-selection__rendered" id="select2-uoym-container" role="textbox" aria-readonly="true" title="Tennessee">Tennessee</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
                             </div>
-                        </div>
-                   
 
+                        
 
                     </div>
                     <!-- /.box-body -->
@@ -98,40 +96,6 @@
 
 @section('scripts')
     <script>
-     var comunas = [
-        @foreach ($comunas as $c)
-          {'nombre':'{{ $c->nombre_comuna }}','id':'{{ $c->id_comuna }}','id_region':'{{ $c->id_region}}'},
-        @endforeach
-      ];
-      var regiones = [
-        @foreach ($regiones as $r)
-          {'nombre':'{{ $r->nombre_region }}','id_region':'{{ $r->id_region }}'},
-        @endforeach
-      ];
 
-        CargarRegiones('select_region')
-      CargarComunas();
-
-      function CargarRegiones(selectId){
-        var select = $('#'+selectId);
-        select.find('option').remove();
-        //alert(options);
-        $.each(regiones, function(key,value) {            
-            select.append('<option value=' + value.id_region + '>' + value.nombre + '</option>');
-        });
-      }
-
-      function CargarComunas(){
-        var select = $('#select_comuna');
-        select.find('option').remove();
-        //alert(options);
-        var id_r = document.getElementById("select_region").value;
-        var coms = comunas.filter( c => c.id_region==id_r);
-        // }result => if(result.id_region==id_r) );
-        // console.log(id_r);
-        $.each(coms, function(key,value) {            
-            select.append('<option value=' + value.id + '>' + value.nombre + '</option>');
-        });
-      }
     </script>
 @stop
