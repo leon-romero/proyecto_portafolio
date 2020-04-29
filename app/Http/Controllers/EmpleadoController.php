@@ -16,7 +16,7 @@ class EmpleadoController extends Controller
      */
     public function index()
     {
-        $empleados=Empleado::all();    
+        $empleados=Empleado::get();    
         //  return $pacientes;
        return view('admin.empleado.index',compact('empleados'));
     }
@@ -50,11 +50,11 @@ class EmpleadoController extends Controller
             $em->apellidos               = $request->input('apellidos');
             $em->telefono                = $request->input('telefono');
             $em->correo                  = $request->input('correo');
-            $em->id_tipo_empleado        = $request->input('id_tipo_empelado');
-            $em->bloqueo                 = 0;
+            $em->id_tipo_empleado        = 1; //por ahora no hay tipos de empleados, pero está modelado para tipos de empleados
+            $em->bloqueado                 = 0;
             $em->activo                  = 1;
             $em->save();
-            return redirect()->route('paciente.index')->with('success','Se ha creador correctamente.');
+            return redirect()->route('empleado.index')->with('success','Se ha creador correctamente.');
 
         } catch (\Throwable $th) {
             // return $th;
@@ -81,9 +81,15 @@ class EmpleadoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($run)
     {
-        //
+        try {
+            $em = Empleado::where('run',$run)->firstOrFail();
+            return view('admin.empleado.edit',compact('em'));
+        } catch (\Throwable $th) {
+            // return $th;
+            return redirect()->route('empleado.index')->with('info','Error intente nuevamente.');
+        }
     }
 
     /**
@@ -93,9 +99,22 @@ class EmpleadoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $run)
     {
-        //
+        try {
+            // return $request;
+            $em = Empleado::where('run',$run)->firstOrFail();
+            $em->username                =  $request->input('run');
+            $em->run                     = $request->input('run');
+            $em->nombres                 = $request->input('nombres');
+            $em->apellidos               = $request->input('apellidos');
+            $em->telefono                = $request->input('telefono');
+            $em->correo                  = $request->input('correo');
+            $em->update();
+            return back()->with('success','Se ha actualizado correctamente.');
+        } catch (\Throwable $th) {
+            return back()->with('danger','Error Intente nuevamente.');
+        }
     }
 
     /**
@@ -106,6 +125,16 @@ class EmpleadoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $emp = Empleado::where('id_empleado',$id)->firstOrFail();
+        // if ($emp->activo ==1) {
+        //     $emp->activo=0;
+        // } else {
+        //     $emp->activo=1;
+        // }
+
+        $emp->activo==1 ? $emp->activo=0 : $emp->activo=1;
+        $emp->update();
+        return back()->with('success','Se ha actualizado Correctamente.');
     }
 }
+

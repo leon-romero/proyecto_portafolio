@@ -30,12 +30,13 @@
           <table id="tabla" class="datatable table table-striped table-sm " cellspacing="0" width="100%">
             <thead>
               <tr>
+                <th></th>
                 <th>#</th>
                 <th>RUN</th>
                 <th>Nombres</th>
                 <th>Correo</th>
                 <th></th>
-                {{-- <th></th> --}}
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -45,13 +46,36 @@
               @endphp  
               @foreach ($empleados as $e)
                 <tr>
+                  <td>
+                    @if ($e->activo==1)
+                        activado
+                    @else
+                        desactivado
+                    @endif
+                  </td>
                   <td>{{ $i++ }}</td>
                   <td>{{ $e->run }}</td>
                   <td>{{ $e->nombre_completo() }}</td>
                   <td>{{ $e->correo }}</td>
                   <td>
-                    {{-- <a href="" class="btn btn-primary btn-sm">Direcciones <i class="fa fa-home"></i></a> --}}
+                   
                     <a href="{{ route('empleado.edit',$e->run) }}" class="btn btn-info btn-sm">Editar <i class="fa fa-edit"></i></a>
+
+                  </td>
+                    <td>
+                    @if ($e->activo==1)
+                    <form action="{{ route('empleado.destroy',$e->id_empleado) }}" method="post">
+                      @csrf
+                      @method('DELETE')
+                      <button type="submit" class='btn btn-danger btn-sm'><i class="fa fa-trash"></i>Eliminar</button>
+                    </form>
+                    @else
+                    <form action="{{ route('empleado.destroy',$e->id_empleado) }}" method="post">
+                      @csrf
+                      @method('DELETE')
+                      <button type="submit" class='btn btn-success btn-sm'><i class="fa fa-check"></i>Reactivar</button>
+                    </form>
+                    @endif
                   </td>
                 </tr>
                 @endforeach

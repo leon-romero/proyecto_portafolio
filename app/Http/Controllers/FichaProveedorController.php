@@ -99,13 +99,11 @@ class FichaProveedorController extends Controller
         try {
             $fp = FichaProveedor::where('id_ficha_proveedor',$id)->firstOrFail();
             $fp->username               =  $request->input('username');
-            //$fp->password               = '12345';
+
             $fp->nombre_empresa         = $request->input('nombre_empresa');
             $fp->rubro                  = $request->input('rubro');
             $fp->telefono               = $request->input('telefono');
             $fp->correo                 = $request->input('correo');
-            // $fp->bloqueo     = 0;
-            // $fp->activo      = 1;
             $fp->update();
             return back()->with('success','Se ha actualizado correctamente.');
         } catch (\Throwable $th) {

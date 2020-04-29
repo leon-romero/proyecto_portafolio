@@ -22,7 +22,7 @@
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
-                <form class="form-horizontal" method="post" action="{{ route('paciente.store') }}">
+                <form class="form-horizontal" method="post" action="{{ route('empleado.store') }}">
                     @csrf
                     <div class="box-body">  
                         <div class="form-group">
@@ -56,34 +56,16 @@
                             </div>
                         </div>
                         
-                        {{-- <div class="row form-group">
-                            <label class="col-sm-2 control-label">Tipo Cliente</label>
-                            <div class="col-sm-6">
-                                <select class="form-control" id="select_region" name="region" onChange="CargarComunas()">   
-                                </select>
-                            </div>
-                        </div> --}}
-                        <div class="row form-group">
+ 
 
-                        <div class="form-group" data-select2-id="13">
-                            <label>Minimal</label>
-                            <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
-                                <option selected="selected" data-select2-id="3">Alabama</option>
-                                <option data-select2-id="19">Alaska</option>
-                                <option data-select2-id="20">California</option>
-                                <option data-select2-id="21">Delaware</option>
-                                <option data-select2-id="22">Tennessee</option>
-                                <option data-select2-id="23">Texas</option>
-                                <option data-select2-id="24">Washington</option>
-                            </select><span class="select2 select2-container select2-container--default select2-container--below select2-container--focus" dir="ltr" data-select2-id="2" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-uoym-container"><span class="select2-selection__rendered" id="select2-uoym-container" role="textbox" aria-readonly="true" title="Tennessee">Tennessee</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
-                            </div>
+
 
                         
 
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer">
-                        <a href="" class="btn btn-danger pull-left">Volver</a>
+                        <a href="{{ route('empleado.index') }}" class="btn btn-danger pull-left">Volver</a>
                         <button type="submit" class="btn btn-success pull-right">Agregar</button>
                     </div>
                 </form>
