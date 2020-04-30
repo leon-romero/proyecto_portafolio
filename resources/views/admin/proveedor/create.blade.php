@@ -59,7 +59,7 @@
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer">
-                        <a href="" class="btn btn-danger pull-left">Volver</a>
+                        <a href="{{ route('proveedor.index') }}" class="btn btn-danger pull-left">Volver</a>
                         <button type="submit" class="btn btn-success pull-right">Agregar</button>
                     </div>
                 </form>

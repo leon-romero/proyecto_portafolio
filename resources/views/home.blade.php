@@ -8,7 +8,7 @@
   <section class="content-header">
     <h1>
       Buenos Dias Administrador
-      <small> buenos dias</small>
+      <small> Una linda sonrisa alegra el dia</small>
     </h1>
 
     <!-- <ol class="breadcrumb">
@@ -48,7 +48,7 @@
     </div>
  
   </section>
-  <section class="content">
+  {{-- <section class="content">
     <div class="row">
         <div class="col-md-12">
             @if (session('info'))
@@ -111,7 +111,7 @@
 
         </div>
     </div>
-</section>
+</section> --}}
 @stop
 
 @section('scripts')

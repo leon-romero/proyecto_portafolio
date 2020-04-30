@@ -29,19 +29,19 @@
                         <div class="form-group">
                             <label for="inputNombre" class="col-sm-2 control-label">Run </label>
                                 <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputNombre" name="run" value="{{ $p->run }}" placeholder="Ingrese Run de Usuario...." required>
+                                <input type="text" class="form-control" id="inputNombre" name="run" value="{{ $p->run }}" placeholder="Ingrese Run de Paciente...." required>
                             </div>
                         </div>    
                         <div class="form-group">
                             <label for="inputNombre" class="col-sm-2 control-label">Nombres</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputNombre" name="nombres" value="{{ $p->nombres }}" placeholder="Nombre Administrador...." required>
+                                <input type="text" class="form-control" id="inputNombre" name="nombres" value="{{ $p->nombres }}" placeholder="Nombre Paciente...." required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputNombre" class="col-sm-2 control-label">Apellidos</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputNombre" name="apellidos" value="{{ $p->apellidos }}" placeholder="Apellidos Admnistrador...." required>
+                                <input type="text" class="form-control" id="inputNombre" name="apellidos" value="{{ $p->apellidos }}" placeholder="Apellidos Paciente...." required>
                             </div>
                         </div>
                         <div class="form-group">

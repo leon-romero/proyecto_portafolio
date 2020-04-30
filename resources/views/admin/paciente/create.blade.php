@@ -28,19 +28,19 @@
                         <div class="form-group">
                             <label for="inputNombre" class="col-sm-2 control-label">Run </label>
                                 <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputNombre" name="run" placeholder="Ingrese Run de Usuario...." required>
+                                <input type="text" class="form-control" id="inputNombre" name="run" placeholder="Ingrese Run de Paciente...." required>
                             </div>
                         </div>    
                         <div class="form-group">
                             <label for="inputNombre" class="col-sm-2 control-label">Nombres</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputNombre" name="nombres" placeholder="Nombre Administrador...." required>
+                                <input type="text" class="form-control" id="inputNombre" name="nombres" placeholder="Nombre Paciente...." required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputNombre" class="col-sm-2 control-label">Apellidos</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputNombre" name="apellidos" placeholder="Apellidos Admnistrador...." required>
+                                <input type="text" class="form-control" id="inputNombre" name="apellidos" placeholder="Apellidos Paciente...." required>
                             </div>
                         </div>
                         <div class="form-group">
@@ -88,7 +88,7 @@
                         <a href="{{ route('paciente.index') }}" class="btn btn-danger pull-left">Volver</a>
                         <button type="submit" class="btn btn-success pull-right">Agregar</button>
                     </div>
-                </form>
+                </form>{{ route('paciente.index') }}
             </div>
 
         </div>
