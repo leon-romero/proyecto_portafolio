@@ -31,7 +31,7 @@
         </a>
         <ul class="treeview-menu">           
           <li class="{{ activar('paciente*') }}"><a href="{{ route('paciente.index') }}"><i class="fas fa-user-astronaut"></i>Paciente</a></li>
-          <li class="{{ activar('odontologo*') }}"><a href=""><i class="fas fa-tooth"></i>Odontologo</a></li>
+          <li class="{{ activar('odontologo*') }}"><a href="{{ route('odontologo.index') }}"><i class="fas fa-tooth"></i>Odontologo</a></li>
           <li class="{{ activar('empleado*') }}"><a href="{{ route('empleado.index') }}"><i class="far fa-address-card"></i>Empleado</a></li>      
           <li class="{{ activar('proveedor*') }}"><a href="{{ route('proveedor.index') }}"><i class="fas fa-address-book"></i>Proveedor</a></li>
         </ul>

@@ -48,6 +48,7 @@ Route::get('paciente/documento/delete/{id_documento}','FichaClienteController@el
 // Route::resource('empleado','EmpleadoController');
 Route::resource('proveedor','FichaProveedorController');
 Route::resource('empleado','EmpleadoController');
+Route::resource('odontologo','OdontologoController');
 
 
 
