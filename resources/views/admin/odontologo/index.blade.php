@@ -31,11 +31,10 @@
             <thead>
               <tr>
                 <th></th>
-                <th>#</th>
                 <th>RUN</th>
                 <th>Nombre</th>
                 <th>Correo</th>
-                <th></th>
+                <th>Telefono</th>
                 <th></th>
               </tr>
             </thead>
@@ -57,6 +56,7 @@
                   <td>{{ $o->run }}</td>
                   <td>{{ $o->nombre_completo() }}</td>
                   <td>{{ $o->correo }}</td>
+                  <td>{{ $o->telefono }}</td>
                   <td>
                    
                     <a href="{{ route('odontologo.edit',$o->run) }}" class="btn btn-info btn-sm">Editar <i class="fa fa-edit"></i></a>
