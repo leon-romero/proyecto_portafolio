@@ -52,3 +52,12 @@ Route::resource('odontologo','OdontologoController');
 
 
 
+
+
+
+
+
+
+Route::get('presentacion', function () {
+    return view('presentacion.index');
+});
