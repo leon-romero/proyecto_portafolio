@@ -36,6 +36,59 @@
           <li class="{{ activar('proveedor*') }}"><a href="{{ route('proveedor.index') }}"><i class="fas fa-address-book"></i> Proveedor</a></li>
         </ul>
       </li>
+
+
+      <li class="treeview {{ activar('paciente*') }}{{ activar('odontologo*') }}{{ activar('empleado*') }}{{ activar('proveedor*') }}">
+        <a>
+          <i class="fa fa-users"></i> <span>Configuración</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">           
+          <li class="{{ activar('paciente*') }}"><a href="{{ route('paciente.index') }}"><i class="fas fa-user-astronaut"></i> Servicio</a></li>
+          <li class="{{ activar('odontologo*') }}"><a href="{{ route('odontologo.index') }}"><i class="fas fa-tooth"></i> Productos</a></li>
+          <li class="{{ activar('empleado*') }}"><a href="{{ route('empleado.index') }}"><i class="far fa-address-card"></i> Familia</a></li>      
+          <li class="{{ activar('proveedor*') }}"><a href="{{ route('proveedor.index') }}"><i class="fas fa-address-book"></i> Tipo</a></li>
+        </ul>
+      </li>
+      <li class="treeview {{ activar('paciente*') }}{{ activar('odontologo*') }}{{ activar('empleado*') }}{{ activar('proveedor*') }}">
+        <a>
+          <i class="fa fa-users"></i> <span>Reportes</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">           
+          <li class="{{ activar('paciente*') }}"><a href="{{ route('paciente.index') }}"><i class="fas fa-user-astronaut"></i> Boleta de Servicios</a></li>
+        </ul>
+      </li>
+
+
+      <li class="header">Vista Paciente</li>
+      <li><a href="/home"><i class="fa fa-clock text-white"></i> <span>Toma de Hora</span></a></li>   
+      <li><a href="/home"><i class="fa fa-home text-white"></i> <span>Historial</span></a></li> 
+      
+
+      
+      <li class="header">Vista odontologo</li>
+      <li><a href="/home"><i class="fa fa-clock text-white"></i> <span>Calendario</span></a></li>   
+      <li><a href="/home"><i class="fa fa-home text-white"></i> <span>Historial</span></a></li> 
+
+
+
+      <li class="header">Vista Empleado</li>
+      <li><a href="/home"><i class="fa fa-clock text-white"></i> <span>Crear Solicitud</span></a></li>   
+      <li><a href="/home"><i class="fa fa-home text-white"></i> <span>Historial de solicitud</span></a></li> 
+      
+
+      
+      <li class="header">Vista Proveedor</li>
+      <li><a href="/home"><i class="fa fa-clock text-white"></i> <span>Solicitudes</span></a></li>   
+      <li><a href="/home"><i class="fa fa-home text-white"></i> <span>Historial de solicitudes</span></a></li> 
+      
+      {{-- <li><a href="/home"><i class="fa fa-home text-red"></i> <span>Home</span></a></li>    --}}
+
       {{-- <li class="treeview {{ activar('pendientes*') }}{{ activar('pedidosfecha*') }}{{ activar('pedidoscodigo*') }}">
         <a>
           <i class="fa fa-arrow-right"></i> <span>Pedidos</span>

@@ -28,7 +28,7 @@
                         <div class="form-group">
                             <label for="inputNombre" class="col-sm-2 control-label">Run </label>
                                 <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputNombre" name="run" placeholder="Ingrese Run de Paciente...." required>
+                                <input type="text" class="form-control" id="inputNombre" name="run" placeholder="Ingrese Run de Paciente...." maxlength="9" min="8" onkeyup="this.value = validarRut(this.value)" required>
                             </div>
                         </div>    
                         <div class="form-group">
@@ -88,7 +88,7 @@
                         <a href="{{ route('paciente.index') }}" class="btn btn-danger pull-left">Volver</a>
                         <button type="submit" class="btn btn-success pull-right">Agregar</button>
                     </div>
-                </form>{{ route('paciente.index') }}
+                </form>
             </div>
 
         </div>
@@ -133,5 +133,15 @@
             select.append('<option value=' + value.id + '>' + value.nombre + '</option>');
         });
       }
+      function validarRut(string) {//solo letras y numeros
+            var out = '';
+            //Se añaden las letras validas
+            var filtro = '1234567890Kk';//Caracteres validos
+
+            for (var i = 0; i < string.length; i++)
+            if (filtro.indexOf(string.charAt(i)) != -1)
+                out += string.charAt(i).toUpperCase();
+            return out;
+        }
     </script>
 @stop
