@@ -60,10 +60,8 @@ Route::post('tomadehora','FichaClienteController@create')->name('usuario.tomadeh
 // ODONTOLOGO
 
 // Calendario
-Route::get('consulta','FichaClienteController@index')->name('consulta.index');
-
-// realizar consulta
-Route::get('consulta/{id}','FichaClienteController@index')->name('consulta.show');
+Route::get('consulta/listado','AtencionPacienteController@index')->name('atencion.index');
+Route::get('consulta/{id}','AtencionPacienteController@show')->name('atencion.show');
 
 
 
