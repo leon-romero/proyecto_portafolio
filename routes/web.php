@@ -14,6 +14,7 @@ Route::post('loginProveedor', 'Authlogin\AuthLogin@loginProveedor')->name('login
 Route::get('loginOdontologo', function () { return view('auth.odontologo'); })->name('login.odontologo');
 Route::post('loginOdontologo', 'Authlogin\AuthLogin@loginOdontologo')->name('login.odontologo');
 
+Route::get('salir', 'Authlogin\AuthLogin@logout')->name('login.salir');
 
 
 

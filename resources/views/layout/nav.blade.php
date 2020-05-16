@@ -14,14 +14,14 @@
     </a>
     <div class="navbar-custom-menu">
       <ul class="nav navbar-nav">       
-        <li class="dropdown notifications-menu">
+        {{-- <li class="dropdown notifications-menu">
           <a href="/" title="Perfil Usuario">
             <i class="fa fa-user">&nbsp;Perfil</i>
             <!-- <span class="label label-warning">10</span> -->
           </a>
-        </li>
+        </li> --}}
         <li class="dropdown tasks-menu">
-          <a href="/" title="Salir">
+          <a href="{{ route('login.salir') }}" title="Salir">
             <i class="fa fa-sign-out">&nbsp;Cerrar sesión</i>
             <!-- <span class="label label-danger">9</span> -->
           </a>

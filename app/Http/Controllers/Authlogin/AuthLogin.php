@@ -99,7 +99,7 @@ class AuthLogin extends Controller
 
     public function logout(){
         $this->cerrar();
-        return redirect()->route('/');
+        return redirect('/');
     }
 
     public function cerrar(){
