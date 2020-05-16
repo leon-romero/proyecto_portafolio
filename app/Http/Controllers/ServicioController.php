@@ -23,8 +23,6 @@ class ServicioController extends Controller
     public function store(Request $request)
     {
         try {
-            //code...
-    
             $s = new Servicio();
             $s->nombre_servicio = $request->input('nombre_servicio');
             $s->mostrar = 1;
@@ -35,5 +33,40 @@ class ServicioController extends Controller
         } catch (\Throwable $th) {
             return back()->with('danger','error intente nuevamente');
         }   
+    }
+
+        /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $s=Servicio::firstOrFail();    
+        return view('admin.servicio.edit',compact('s'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+            // $p = Producto::where('id_producto',$id)->firstOrFail();
+        try {
+            $s = Servicio::where('id_servicio',$id)->firstOrFail();
+            $s->nombre_servicio = $request->input('nombre_servicio');
+            $s->update();
+            
+            // return redirect()->route('servicio.index')->with('success','Se ha creado correctamente');
+            return back()->with('success','Se ha actualizado correctamente');
+
+        } catch (\Throwable $th) {
+            return back()->with('danger','error intente nuevamente');
+        } 
     }
 }

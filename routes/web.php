@@ -35,6 +35,8 @@ Route::group(['middleware' => 'acceso.empleado'], function() {
     Route::get('paciente/documento/delete/{id_documento}','FichaClienteController@eliminarDocumento')->name('paciente.documento.delete');
     
     Route::resource('proveedor','FichaProveedorController');
+    Route::post('provedor/producto','DetalleProveedorController@store')->name('proveedor.producto.store');
+    Route::delete('provedor/producto/{id}','DetalleProveedorController@destroy')->name('proveedor.producto.destroy');
     Route::resource('empleado','EmpleadoController');
     Route::resource('odontologo','OdontologoController');
     Route::resource('servicio','ServicioController');
@@ -64,7 +66,7 @@ Route::get('usuario/consulta','FichaClienteController@index')->name('usuario.con
 // ODONTOLOGO
 
 // Calendario
-Route::get('consulta','FichaClienteController@index')->name('consulta.index');
+Route::get('consulta/listado','AtencionPacienteController@index')->name('atencion.index');
 
 // realizar consulta
 Route::get('consulta/{id}','FichaClienteController@index')->name('consulta.show');

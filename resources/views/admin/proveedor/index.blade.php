@@ -36,6 +36,7 @@
                 <th>Telefono</th>
                 <th>Correo</th>
                 <th></th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -50,6 +51,9 @@
                   <td>{{ $pro->rubro }}</td>
                   <td>{{ $pro->telefono }}</td>
                   <td>{{ $pro->correo }}</td>
+                  <td>
+                    <a href="{{ route('proveedor.show',$pro->id_ficha_proveedor) }}" class="btn btn-success btn-sm">Productos <i class="fa fa-boxes"></i></a>
+                  </td>
                   <td>
                     {{-- <a href="" class="btn btn-primary btn-sm">Direcciones <i class="fa fa-home"></i></a> --}}
                     <a href="{{ route('proveedor.edit',$pro->id_ficha_proveedor) }}" class="btn btn-info btn-sm">Editar <i class="fa fa-edit"></i></a>

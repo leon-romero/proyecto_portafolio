@@ -32,31 +32,30 @@
           <table id="tabla" class="datatable table table-striped table-sm " cellspacing="0" width="100%">
             <thead>
               <tr>
-                {{-- <th>#</th> --}}
-                {{-- <th></th> --}}
+                <th></th>
+                <th>Hora</th>
+                <th>Rut</th>
                 <th>Nombre</th>
                 <th></th>
               </tr>
             </thead>
             <tbody>
-              @if (count($servicios)>0 )
-              @php
-                  $i=1;
-              @endphp  
-              @foreach ($servicios as $s)
+              @if (count($reservas)>0 ) 
+              @foreach ($reservas as $r)
                 <tr>
-                  {{-- <td>{{ $i++ }}</td> --}}
-                  {{-- <td>
-                    @if ($s->mostrar==1)
-                        activado
-                    @else
-                        desactivado
-                    @endif
-                  </td> --}}
-                
-                  <td>{{ $s->nombre_servicio }}</td>
                   <td>
-                    <a href="{{ route('servicio.edit',$s->id_servicio) }}" class="btn btn-info btn-sm">editar <i class="fa fa-edit"></i></a>
+                    @if ($r->id_odontologo==0)
+                      Espera
+                    @else
+                      Atendido
+                    @endif
+                  </td>
+                  <td>{{ $r->horario->horario }}</td>
+                  <td>{{ $r->cliente->run }}</td>
+                  <td>{{ $r->cliente->nombre_completo() }}</td>
+                  {{-- <td>{{ $r->cliente->run }}</td> --}}
+                  <td>
+                    {{-- <a href="{{ route('servicio.edit',$s->id_servicio) }}" class="btn btn-info btn-sm">editar <i class="fa fa-edit"></i></a> --}}
                   </td>
                 </tr>
                 @endforeach

@@ -18,6 +18,7 @@ class CreateTablaReservarHora extends Migration
             $table->integer('id_centro');
             $table->date('fecha_reserva');
             $table->integer('id_horario');
+            $table->integer('id_ficha_cliente');
             $table->integer('id_odontologo')->nullable();
             $table->text('comentario')->nullable();
             $table->integer('activo');

@@ -19,7 +19,7 @@ class ReservarHora extends Model
         return $this->belongsTo(Servicio::class,'id_servicio');
     }
     public function cliente(){
-        return $this->belongsTo(Ficha_cliente::class,'id_ficha_cliente');
+        return $this->belongsTo(FichaCliente::class,'id_ficha_cliente');
     }
 
     public function odontologo(){
