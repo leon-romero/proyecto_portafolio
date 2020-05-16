@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Modelo\Producto;
 use Illuminate\Http\Request;
 
 class ProductoController extends Controller
@@ -13,7 +14,8 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        //
+        $productos = Producto::get();
+        return view('admin.producto.index',compact('productos'));
     }
 
     /**
@@ -23,7 +25,7 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.producto.create');
     }
 
     /**
@@ -34,7 +36,24 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $p = new Producto();
+            $p->nombre_producto = $request->nombre_producto;
+            $p->stock = $request->stock;
+            $p->stock_critico = $request->stock_critico;
+            $p->descripcion = $request->descripcion;
+            $p->precio_compra = 0;
+            $p->precio_venta = 0;
+            $p->id_familia = 1;
+            $p->id_tipo_producto = 1;
+            $p->bloqueo = 0;
+            $p->activo = 1;
+            $p->save();
+            return redirect()->route('producto.index')->with('success','Se ha creado correctamente.');
+        } catch (\Throwable $th) {
+            // return back()->with('danger','Error intente nuevamente');
+            return $th;
+        }
     }
 
     /**
@@ -45,7 +64,7 @@ class ProductoController extends Controller
      */
     public function show($id)
     {
-        //
+      
     }
 
     /**
@@ -56,7 +75,8 @@ class ProductoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $p = Producto::where('id_producto',$id)->firstOrFail();
+        return view('admin.producto.edit',compact('p'));
     }
 
     /**
@@ -68,7 +88,18 @@ class ProductoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $p = Producto::where('id_producto',$id)->firstOrFail();
+            $p->nombre_producto = $request->nombre_producto;
+            $p->stock = $request->stock;
+            $p->stock_critico = $request->stock_critico;
+            $p->descripcion = $request->descripcion;
+            $p->update();
+            return back()->with('success','Se ha actualizado correctamente');
+        } catch (\Throwable $th) {
+            // return back()->with('danger','Error intente nuevamente');
+            return $th;
+        }
     }
 
     /**
