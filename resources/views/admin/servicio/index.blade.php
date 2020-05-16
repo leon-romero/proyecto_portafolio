@@ -2,7 +2,7 @@
 
 @section('contenido')
 <section class="content-header">
-  <h1>Lista de Empleados</h1>
+  <h1>Lista de Servicios</h1>
   {{-- <ol class="breadcrumb"> --}}
     {{-- <li><a href=""><i class="fa fa-home"></i> Home</a></li> --}}
     {{-- <li class="active">Clientes</li> --}}
@@ -18,10 +18,12 @@
     <div class="col-md-12">
       <div class="box">
         <div class="box-header">
-          <h3 class="box-title">Todos los Empleados</h3>
+          <h3 class="box-title">Todos los Servicios</h3>
         </div>
         <div class="col-md-12 text-center">
-          <a href="{{ route('empleado.create')}}" class="btn btn-success btn-sm"><i class="fa fa-user-plus"></i> Nuevo Empleado</a>
+          <a href="{{ route('servicio.create')}}" class="btn btn-success btn-sm">
+            {{-- <i class="fa fa-user-plus"></i> --}}
+            Nuevo Servicio</a>
         </div>
         <br>
         <br>
@@ -30,12 +32,9 @@
           <table id="tabla" class="datatable table table-striped table-sm " cellspacing="0" width="100%">
             <thead>
               <tr>
-                <th></th>
-                <th>#</th>
-                <th>RUN</th>
-                <th>Nombres</th>
-                <th>Correo</th>
-                <th></th>
+                {{-- <th>#</th> --}}
+                {{-- <th></th> --}}
+                <th>Nombre</th>
                 <th></th>
               </tr>
             </thead>
@@ -46,22 +45,20 @@
               @endphp  
               @foreach ($servicios as $s)
                 <tr>
-                  <td>
-                    @if ($s->activo==1)
+                  {{-- <td>{{ $i++ }}</td> --}}
+                  {{-- <td>
+                    @if ($s->mostrar==1)
                         activado
                     @else
                         desactivado
                     @endif
-                  </td>
-                  <td>{{ $i++ }}</td>
+                  </td> --}}
+                
                   <td>{{ $s->nombre_servicio }}</td>
                   <td>
                    
-                    <a href="" class="btn btn-info btn-sm">editar <i class="fa fa-edit"></i></a>
-
-                  </td>
-                    <td>
-                    @if ($s->activo==1)
+                    <a href="{{ route('servicio.edit',$s->id_servicio) }}" class="btn btn-info btn-sm">editar <i class="fa fa-edit"></i></a>
+                    {{-- @if ($s->activo==1)
                     <form action="" method="post">
                       @csrf
                       @method('DELETE')
@@ -72,7 +69,7 @@
                       @csrf
                       @method('DELETE')
                       <button type="submit" class='btn btn-success btn-sm'><i class="fa fa-check"></i>Reactivar</button>
-                    </form>
+                    </form> --}}
                     @endif
                   </td>
                 </tr>
