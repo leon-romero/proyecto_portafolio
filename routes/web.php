@@ -50,6 +50,8 @@ Route::group(['middleware' => 'acceso.empleado'], function() {
 Route::get('homeCliente', function () { return view('paciente.index'); })->name('home.cliente');
 Route::get('usuario','FichaClienteController@index')->name('usuario.index');
 Route::post('usuario','FichaClienteController@index')->name('usuario.tomadehora');
+//nuevo
+Route::post('create','FichaClienteController@create')->name('usuario.tomadehora.create');
 
 // listado de sus consultas - modal
 Route::get('usuario/consulta','FichaClienteController@index')->name('usuario.consulta');
