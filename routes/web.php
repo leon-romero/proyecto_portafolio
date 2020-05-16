@@ -35,8 +35,6 @@ Route::group(['middleware' => 'acceso.empleado'], function() {
     Route::get('paciente/documento/delete/{id_documento}','FichaClienteController@eliminarDocumento')->name('paciente.documento.delete');
     
     Route::resource('proveedor','FichaProveedorController');
-    Route::post('provedor/producto','DetalleProveedorController@store')->name('proveedor.producto.store');
-    Route::delete('provedor/producto/{id}','DetalleProveedorController@destroy')->name('proveedor.producto.destroy');
     Route::resource('empleado','EmpleadoController');
     Route::resource('odontologo','OdontologoController');
     Route::resource('servicio','ServicioController');
@@ -50,13 +48,9 @@ Route::group(['middleware' => 'acceso.empleado'], function() {
 
 // formulario servicios, fecha , hora
 Route::get('homeCliente', function () { return view('paciente.index'); })->name('home.cliente');
-Route::get('usuario','FichaClienteController@index')->name('usuario.index');
-Route::post('usuario','FichaClienteController@index')->name('usuario.tomadehora');
-//nuevo
-Route::post('create','FichaClienteController@create')->name('usuario.tomadehora.create');
+//nuevo (Reservar_hora)
+Route::post('tomadehora','FichaClienteController@create')->name('usuario.tomadehora.create');
 
-// listado de sus consultas - modal
-Route::get('usuario/consulta','FichaClienteController@index')->name('usuario.consulta');
 
 
 
@@ -66,7 +60,7 @@ Route::get('usuario/consulta','FichaClienteController@index')->name('usuario.con
 // ODONTOLOGO
 
 // Calendario
-Route::get('consulta/listado','AtencionPacienteController@index')->name('atencion.index');
+Route::get('consulta','FichaClienteController@index')->name('consulta.index');
 
 // realizar consulta
 Route::get('consulta/{id}','FichaClienteController@index')->name('consulta.show');
