@@ -47,7 +47,7 @@ class AuthLogin extends Controller
             $pass =  $request->password;
             if($c->password==$pass){
                 Auth::guard('cliente')->loginUsingId($c->id_ficha_cliente);
-                return redirect()->route('home');
+                return redirect()->route('home.cliente');
                 // return auth('empleado')->user();
             }else{
                 // return back()->with('info','Error. Intente nuevamente.');
