@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Modelo\FichaProveedor;
+use App\Modelo\DetalleProveedor as Detalle;
+use App\Modelo\Producto;
 
 class FichaProveedorController extends Controller
 {
@@ -51,11 +53,9 @@ class FichaProveedorController extends Controller
             return redirect()->route('proveedor.index')->with('success','Se ha creador correctamente.');
 
         } catch (\Throwable $th) {
-             return $th;
-
+            // return $th;
             return back()->with('info','Error Intente nuevamente.');
         }
-      
     }
 
     /**
@@ -66,7 +66,26 @@ class FichaProveedorController extends Controller
      */
     public function show($id)
     {
-        //
+        try {
+            $pro = FichaProveedor::where('id_ficha_proveedor',$id)->firstOrFail();
+            $productosArreglo = Producto::get();
+            $detalles = Detalle::where('id_ficha_proveedor',$id)->get();
+            $productos = array();
+            foreach ($productosArreglo as $p) {
+                foreach ($detalles as $d) {
+                    if($p->id_producto == $d->id_producto){
+                        $p->activo = 0;
+                    }
+                }
+                array_push($productos,$p);
+            }
+
+            return view('admin.proveedor.productos.index',compact('productos','detalles','pro'));
+        } catch (\Throwable $th) {
+            // return $th;
+            return redirect()->route('proveedor.index')->with('info','Error intente nuevamente.');
+
+        }
     }
 
     /**
