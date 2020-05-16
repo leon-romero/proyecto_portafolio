@@ -10,7 +10,7 @@ class BoletaServicio extends Model
     protected $primaryKey = 'id_boleta_servicio';
 
     public function cliente(){
-        return $this->belongsTo(Ficha_cliente::class,'id_ficha_cliente');
+        return $this->belongsTo(FichaCliente::class,'id_ficha_cliente');
     }
     public function odontologo(){
         return $this->belongsTo(Odontologo::class,'id_odontologo');

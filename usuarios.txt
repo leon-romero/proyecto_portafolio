@@ -8,3 +8,19 @@
 --- Odontologo ---
 
 --- Proveedor ---
+
+
+INSERT INTO `proyecto_leo`.`horario` (`id_horario`, `horario`, `activo`) VALUES ('1', '10:00', '1');
+INSERT INTO `proyecto_leo`.`horario` (`id_horario`, `horario`, `activo`) VALUES ('2', '10:30', '1');
+INSERT INTO `proyecto_leo`.`horario` (`id_horario`, `horario`, `activo`) VALUES ('3', '11:00', '1');
+INSERT INTO `proyecto_leo`.`horario` (`id_horario`, `horario`, `activo`) VALUES ('4', '11:30', '1');
+INSERT INTO `proyecto_leo`.`horario` (`id_horario`, `horario`, `activo`) VALUES ('5', '12:00', '1');
+INSERT INTO `proyecto_leo`.`horario` (`id_horario`, `horario`, `activo`) VALUES ('6', '12:30', '1');
+INSERT INTO `proyecto_leo`.`horario` (`id_horario`, `horario`, `activo`) VALUES ('7', '13:00', '1');
+INSERT INTO `proyecto_leo`.`horario` (`id_horario`, `horario`, `activo`) VALUES ('8', '13:30', '1');
+INSERT INTO `proyecto_leo`.`horario` (`id_horario`, `horario`, `activo`) VALUES ('9', '15:00', '1');
+INSERT INTO `proyecto_leo`.`horario` (`id_horario`, `horario`, `activo`) VALUES ('10', '15:30', '1');
+INSERT INTO `proyecto_leo`.`horario` (`id_horario`, `horario`, `activo`) VALUES ('11', '16:00', '1');
+INSERT INTO `proyecto_leo`.`horario` (`id_horario`, `horario`, `activo`) VALUES ('12', '16:30', '1');
+INSERT INTO `proyecto_leo`.`horario` (`id_horario`, `horario`, `activo`) VALUES ('13', '17:00', '1');
+INSERT INTO `proyecto_leo`.`horario` (`id_horario`, `horario`, `activo`) VALUES ('14', '17:30', '1');

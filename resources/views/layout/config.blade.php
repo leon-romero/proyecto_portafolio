@@ -95,7 +95,8 @@
       
 
       @if (auth('odontologo')->check())
-      <li class="header">Vista odontologo</li>
+      <li class="header">Atención</li>
+      <li><a href="{{ route('atencion.index') }}"><i class="fa fa-clock text-white"></i> <span>Atención</span></a></li>   
       <li><a href="/home"><i class="fa fa-clock text-white"></i> <span>Calendario</span></a></li>   
       <li><a href="/home"><i class="fa fa-home text-white"></i> <span>Historial</span></a></li> 
       @endif
