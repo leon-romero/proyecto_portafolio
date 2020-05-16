@@ -47,6 +47,7 @@ Route::group(['middleware' => 'acceso.empleado'], function() {
 // PACIENTE
 
 // formulario servicios, fecha , hora
+Route::get('homeCliente', function () { return view('paciente.index'); })->name('home.cliente');
 Route::get('usuario','FichaClienteController@index')->name('usuario.index');
 Route::post('usuario','FichaClienteController@index')->name('usuario.tomadehora');
 
