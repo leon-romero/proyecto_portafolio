@@ -67,9 +67,7 @@ Route::get('usuario/consulta','FichaClienteController@index')->name('usuario.con
 
 // Calendario
 Route::get('consulta/listado','AtencionPacienteController@index')->name('atencion.index');
-
-// realizar consulta
-Route::get('consulta/{id}','FichaClienteController@index')->name('consulta.show');
+Route::get('consulta/{id}','AtencionPacienteController@show')->name('atencion.show');
 
 
 
