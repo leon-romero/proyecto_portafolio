@@ -37,6 +37,8 @@ Route::group(['middleware' => 'acceso.empleado'], function() {
     Route::resource('proveedor','FichaProveedorController');
     Route::resource('empleado','EmpleadoController');
     Route::resource('odontologo','OdontologoController');
+    Route::resource('servicio','ServicioController');
+    Route::resource('producto','ProductoController');
 });
 
 
@@ -63,3 +65,6 @@ Route::get('consulta','FichaClienteController@index')->name('consulta.index');
 
 // realizar consulta
 Route::get('consulta/{id}','FichaClienteController@index')->name('consulta.show');
+
+
+

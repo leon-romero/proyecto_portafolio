@@ -56,7 +56,7 @@
       
      
 
-      <li class="treeview {{ activar('paciente*') }}{{ activar('odontologo*') }}{{ activar('empleado*') }}{{ activar('proveedor*') }}">
+      <li class="treeview {{ activar('servicio*') }}{{ activar('producto*') }}">
         <a>
           <i class="fa fa-users"></i> <span>Configuración</span>
           <span class="pull-right-container">
@@ -64,10 +64,10 @@
           </span>
         </a>
         <ul class="treeview-menu">           
-          <li class="{{ activar('paciente*') }}"><a href="{{ route('paciente.index') }}"><i class="fas fa-user-astronaut"></i> Servicio</a></li>
-          <li class="{{ activar('odontologo*') }}"><a href="{{ route('odontologo.index') }}"><i class="fas fa-tooth"></i> Productos</a></li>
-          <li class="{{ activar('empleado*') }}"><a href="{{ route('empleado.index') }}"><i class="far fa-address-card"></i> Familia</a></li>      
-          <li class="{{ activar('proveedor*') }}"><a href="{{ route('proveedor.index') }}"><i class="fas fa-address-book"></i> Tipo</a></li>
+          <li class="{{ activar('servicio*') }}"><a href="{{ route('servicio.index') }}"><i class="fas fa-user-astronaut"></i> Servicio</a></li>
+          <li class="{{ activar('producto*') }}"><a href="{{ route('producto.index') }}"><i class="fas fa-tooth"></i> Productos</a></li>
+          {{-- <li class="{{ activar('empleado*') }}"><a href="{{ route('empleado.index') }}"><i class="far fa-address-card"></i> Familia</a></li>       --}}
+          {{-- <li class="{{ activar('proveedor*') }}"><a href="{{ route('proveedor.index') }}"><i class="fas fa-address-book"></i> Tipo</a></li> --}}
         </ul>
       </li>
 
