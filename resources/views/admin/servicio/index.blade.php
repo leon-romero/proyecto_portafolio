@@ -56,21 +56,7 @@
                 
                   <td>{{ $s->nombre_servicio }}</td>
                   <td>
-                   
                     <a href="{{ route('servicio.edit',$s->id_servicio) }}" class="btn btn-info btn-sm">editar <i class="fa fa-edit"></i></a>
-                    {{-- @if ($s->activo==1)
-                    <form action="" method="post">
-                      @csrf
-                      @method('DELETE')
-                      <button type="submit" class='btn btn-danger btn-sm'><i class="fa fa-trash"></i>Activado</button>
-                    </form>
-                    @else
-                    <form action="" method="post">
-                      @csrf
-                      @method('DELETE')
-                      <button type="submit" class='btn btn-success btn-sm'><i class="fa fa-check"></i>Reactivar</button>
-                    </form> --}}
-                    @endif
                   </td>
                 </tr>
                 @endforeach
