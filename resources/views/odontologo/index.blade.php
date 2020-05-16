@@ -45,9 +45,9 @@
                 <tr>
                   <td>
                     @if ($r->id_odontologo==0)
-                      Atendido
-                    @else
                       Espera
+                    @else
+                      Atendido
                     @endif
                   </td>
                   <td>{{ $r->horario->horario }}</td>
