@@ -11,7 +11,6 @@
   <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css">
-  <!-- Desarrollado por Bemtorres.win -->
   <!-- Theme style -->
   <link rel="stylesheet" href="/dist/css/AdminLTE.min.css">
   <link rel="icon" type="image/ico" href="favicon.ico">
@@ -22,8 +21,8 @@
     height: 100%;
     /* min-height: 35rem; */
     /* padding: 15rem 0; */
-    background: -webkit-gradient(linear, left top, left bottom, from(rgba(22, 22, 22, 0.1)), color-stop(75%, rgba(22, 22, 22, 0.5)), to(#161616)), url("/img/diente.jpg");
-    background: linear-gradient(top bottom, rgba(22, 22, 22, 0.1) 0%, rgba(22, 22, 22, 0.5) 75%, #161616 100%), url("/img/diente.jpg");
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(22, 22, 22, 0.1)), color-stop(75%, rgba(22, 22, 22, 0.5)), to(#161616)), url("/img/odontologo.jpg");
+    background: linear-gradient(top bottom, rgba(22, 22, 22, 0.1) 0%, rgba(22, 22, 22, 0.5) 75%, #161616 100%), url("/img/odontologo.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: scroll;
@@ -90,7 +89,6 @@ body {
   <div class="login-box">
     <div class="login-logo">
       {{-- //TODO: Aca ingresar --}}
-      {{-- <img src="/img/RinconOrgnanico.png" class="hidden-sm hidden-xs" alt="img" width="100" height="100"> --}}
       <h1 class="colorBlanco"><b>Linda</b>Sonrisa</h1>
     
     </div>
@@ -103,8 +101,8 @@ body {
           {!! session('info') !!}
         </div>
       @endif
-      <form class="form-signin" action="{{ route('home') }}" method="get">
-        {!! csrf_field() !!}
+      <form class="form-signin" action="{{ route('login.odontologo') }}" method="POST">
+        @csrf
         <div class="form-group has-feedback">
           <input type="text" class="form-control" placeholder="Usuario" name="username" autofocus required>
           <span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -121,7 +119,7 @@ body {
           <br>
           <br>
           <div class="col-md-12">
-            <a href="{{ route('home') }}" class="btn btn-success btn-block">Ir a home</a>
+            {{-- <a href="{{ route('home') }}" class="btn btn-success btn-block">Ir a home</a> --}}
           </div>       
           {{-- <div class="col-md-12">
             <br><br>

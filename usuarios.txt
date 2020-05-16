@@ -1,0 +1,10 @@
+
+--- Empleado ---
+1 administrador
+2 empleado comun
+
+--- Paciente ---
+
+--- Odontologo ---
+
+--- Proveedor ---

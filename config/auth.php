@@ -46,6 +46,22 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+        'empleado' => [
+            'driver' => 'session',
+            'provider' => 'empleado',
+        ],  
+        'cliente' => [
+            'driver' => 'session',
+            'provider' => 'cliente',
+        ],
+        'proveedor' => [
+            'driver' => 'session',
+            'provider' => 'proveedor',
+        ],
+        'odontologo' => [
+            'driver' => 'session',
+            'provider' => 'odontologo',
+        ],
     ],
 
     /*
@@ -75,6 +91,23 @@ return [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
+        
+        'empleado' => [
+            'driver' => 'eloquent',
+            'model' => App\Modelo\Empleado::class,
+        ],
+        'cliente' => [
+            'driver' => 'eloquent',
+            'model' => App\Modelo\FichaCLiente::class,
+        ],
+        'proveedor' => [
+            'driver' => 'eloquent',
+            'model' => App\Modelo\FichaProveedor::class,
+        ],
+        'odontologo' => [
+            'driver' => 'eloquent',
+            'model' => App\Modelo\Odontologo::class,
+        ],
     ],
 
     /*
@@ -112,6 +145,6 @@ return [
     |
     */
 
-    'password_timeout' => 10800,
+    // 'password_timeout' => 10800,
 
 ];

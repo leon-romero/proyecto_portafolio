@@ -60,11 +60,11 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-end" id="navbar-wd">
                     <ul class="navbar-nav">
-                        {{-- <li><a class="nav-link active" href="index.html">Home</a></li>
-                        <li><a class="nav-link" href="about.html">Aboutus</a></li>
-                        <li><a class="nav-link" href="cycv.html">create your cv</a></li>
-                        <li><a class="nav-link" href="contact.html">Contact Us</a></li> --}}
-                        <li><a class="nav-link active" style="background:#fff;color:#000;" href="{{ route('login') }}">Login</a></li>
+                        {{-- <li><a class="nav-link active" href="index.html">Home</a></li> --}}
+                        <li><a class="nav-link active" href="{{ route('login.cliente') }}">Cliente</a></li>
+                        <li><a class="nav-link active" href="{{ route('login.proveedor') }}">Proveedor</a></li>
+                        <li><a class="nav-link active" href="{{ route('login.odontologo') }}">Odontologo</a></li>
+                        <li><a class="nav-link active" style="background:#fff;color:#000;" href="{{ route('login.empleado') }}">Login</a></li>
                     </ul>
                 </div>
             </div>

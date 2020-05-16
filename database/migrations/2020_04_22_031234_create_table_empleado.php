@@ -22,7 +22,9 @@ class CreateTableEmpleado extends Migration
             $table->string('apellidos', 100);
             $table->string('telefono', 60)->nullable();
             $table->string('correo', 100)->unique();
-            $table->integer('id_tipo_empleado');
+            // 1 administrador
+            // 2 empleado comuna
+            $table->integer('id_tipo_empleado'); 
             $table->integer('bloqueado');
             $table->integer('activo');
             $table->timestamps();
