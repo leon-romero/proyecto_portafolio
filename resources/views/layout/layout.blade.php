@@ -41,7 +41,23 @@
   {{-- insertar codigo style --}}
   @yield('style')	
 </head>
-<body class="hold-transition skin-green sidebar-mini">
+@php
+  $color = "skin-green";
+  if (auth('empleado')->check()) {
+    $color = "skin-blue";
+  } else {
+    if (auth('odontologo')->check()) {
+      $color = "skin-purple";
+    } else {
+      if (auth('cliente')->check()) {
+        $color = "skin-black";
+      } else {
+        $color = "skin-yellow";
+      }
+    }
+  }
+@endphp
+<body class="hold-transition {{ $color }} sidebar-mini">
   <div class="wrapper">    
     {{-- barra de navegacion --}}
     @include('layout.nav')
