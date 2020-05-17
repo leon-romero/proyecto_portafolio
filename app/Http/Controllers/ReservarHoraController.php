@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Modelo\Horario;
 use App\Modelo\Servicio;
+use App\Modelo\ReservarHora;
 
 
 class ReservarHoraController extends Controller
@@ -72,7 +73,21 @@ class ReservarHoraController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $rh = ReservarHora::where('id_reservar_hora',$id)->firstOrFail();
+            $rh->id_estado_reserva = $request->input('id_estado');
+            $rh->comentario = $request->input('comentario');
+            $rh->id_odontologo = auth('odontologo')->user()->id_odontologo;
+            $rh->update();
+
+            //Se genera la consulta
+            // Iteracion actualizar boleta de servicio
+
+            return back()->with('success','Se ha actualizado correctamente.');
+        } catch (\Throwable $th) {
+            // return back()->with('info','Error Intente nuevamente.');
+            return $th;
+        }
     }
 
     /**

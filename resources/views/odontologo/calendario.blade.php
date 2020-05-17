@@ -53,14 +53,6 @@
                   <td>{{ $r->cliente->nombre_completo() }}</td>
                   <td>{{ $r->odontologo->nombre_completo() }}</td>
                   <td>{{ $r->comentario }}</td>
-                  {{-- <td>{{ $r->cliente->run }}</td> --}}
-                  {{-- <td>
-                   @if ($r->id_odontologo>0)
-                   <a href="{{ route('atencion.show',$r->id_reservar_hora) }}" class="btn btn-info btn-sm">Ver</a>
-                   @else
-                   <a href="{{ route('atencion.show',$r->id_reservar_hora) }}" class="btn btn-success btn-sm">Atender</a>
-                   @endif
-                  </td> --}}
                 </tr>
                 @endforeach
               @endif

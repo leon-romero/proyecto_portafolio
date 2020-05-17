@@ -13,14 +13,12 @@ class DetalleProveedorController extends Controller
     public function store(Request $request)
     {
         try {
-            // return $request;
             $d = new Detalle();
             $d->id_producto = $request->input('id_producto');
             $d->id_ficha_proveedor = $request->input('id_ficha_proveedor');
             $d->save();
             return back()->with('success','Se ha incorporado correctamente.');
         } catch (\Throwable $th) {
-            // return $th;
             return back()->with('info','Error Intente nuevamente.');
         }
     }
