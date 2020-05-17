@@ -55,7 +55,7 @@ Route::post('tomadehora','FichaClienteController@create')->name('usuario.tomadeh
 
 
 
-Route::group(['middleware' => 'acceso.cliente'], function() {   
+Route::group(['middleware' => 'acceso.odontologo'], function() {   
 Route::get('consulta/listado','AtencionPacienteController@index')->name('atencion.index');
 Route::get('consulta/{id}','AtencionPacienteController@show')->name('atencion.show');
 
