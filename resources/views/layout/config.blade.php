@@ -89,7 +89,7 @@
 
       @if (auth('cliente')->check())
       <li class="header">Vista Cliente</li>
-      <li><a href="/home"><i class="fa fa-clock text-white"></i> <span>Toma de Hora</span></a></li>   
+      <li><a href="{{route('tomadehora.create')}}"><i class="fa fa-clock text-white"></i> <span>Toma de Hora</span></a></li>   
       <li><a href="/home"><i class="fa fa-home text-white"></i> <span>Historial</span></a></li> 
       @endif
       

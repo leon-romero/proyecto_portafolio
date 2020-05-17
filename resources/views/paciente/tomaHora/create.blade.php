@@ -63,15 +63,6 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="row form-group">
-                            <label class="col-sm-2 control-label">Comuna</label>
-                            <div class="col-sm-10">
-                                
-                                <select class="form-control {{ $errors->has('id_comuna') ? 'is-invalid' : '' }}" name='id_comuna' id="select_comuna">
-                                </select>
-                                {!! $errors->first('id_comuna', ' <small id="inputPassword" class="form-text text-danger">:message</small>') !!}
-                            </div>
-                        </div>
 
                         <div class="row form-group">
                             <label class="col-sm-2 control-label">direccion</label>
@@ -98,41 +89,6 @@
 
 @section('scripts')
     <script>
-     var comunas = [
-        @foreach ($comunas as $c)
-          {'nombre':'{{ $c->nombre_comuna }}','id':'{{ $c->id_comuna }}','id_region':'{{ $c->id_region}}'},
-        @endforeach
-      ];
-      var regiones = [
-        @foreach ($regiones as $r)
-          {'nombre':'{{ $r->nombre_region }}','id_region':'{{ $r->id_region }}'},
-        @endforeach
-      ];
-
-        CargarRegiones('select_region')
-      CargarComunas();
-
-      function CargarRegiones(selectId){
-        var select = $('#'+selectId);
-        select.find('option').remove();
-        //alert(options);
-        $.each(regiones, function(key,value) {            
-            select.append('<option value=' + value.id_region + '>' + value.nombre + '</option>');
-        });
-      }
-
-      function CargarComunas(){
-        var select = $('#select_comuna');
-        select.find('option').remove();
-        //alert(options);
-        var id_r = document.getElementById("select_region").value;
-        var coms = comunas.filter( c => c.id_region==id_r);
-        // }result => if(result.id_region==id_r) );
-        // console.log(id_r);
-        $.each(coms, function(key,value) {            
-            select.append('<option value=' + value.id + '>' + value.nombre + '</option>');
-        });
-      }
       function validarRut(string) {//solo letras y numeros
             var out = '';
             //Se añaden las letras validas
