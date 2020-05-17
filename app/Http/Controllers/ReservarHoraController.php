@@ -28,7 +28,8 @@ class ReservarHoraController extends Controller
      */
     public function create()
     {
-        return view('paciente.tomaHora.create');
+        $servicios=Servicio::get();
+        return view('paciente.tomaHora.create',compact('servicios'));
     }
 
     /**
