@@ -27,14 +27,14 @@ Route::get('salir', 'Authlogin\AuthLogin@logout')->name('login.salir');
 
 Route::get('home', function () { return view('home'); })->name('home');
 
-Route::group(['middleware' => 'acceso.empleado'], function() {
-
+Route::group(['middleware' => 'acceso.empleado'], function() {   
     Route::resource('paciente','FichaClienteController');
     Route::get('paciente/{rut}/documento','FichaClienteController@documento')->name('paciente.documento.index');
     Route::post('paciente/{rut}/documento','FichaClienteController@subirDocumento')->name('paciente.documento.store');
     Route::get('paciente/documento/delete/{id_documento}','FichaClienteController@eliminarDocumento')->name('paciente.documento.delete');
-    
     Route::resource('proveedor','FichaProveedorController');
+    Route::post('provedor/producto','DetalleProveedorController@store')->name('proveedor.producto.store');
+    Route::delete('provedor/producto/{id}','DetalleProveedorController@destroy')->name('proveedor.producto.destroy');
     Route::resource('empleado','EmpleadoController');
     Route::resource('odontologo','OdontologoController');
     Route::resource('servicio','ServicioController');
@@ -42,26 +42,24 @@ Route::group(['middleware' => 'acceso.empleado'], function() {
 });
 
 
-
-
-// PACIENTE
-
+// CLiente
+Route::group(['middleware' => 'acceso.cliente'], function() {   
 // formulario servicios, fecha , hora
 Route::get('homeCliente', function () { return view('paciente.index'); })->name('home.cliente');
 //nuevo (Reservar_hora)
 Route::post('tomadehora','FichaClienteController@create')->name('usuario.tomadehora.create');
 
+});
 
 
 
 
 
-
-// ODONTOLOGO
-
-// Calendario
+Route::group(['middleware' => 'acceso.cliente'], function() {   
 Route::get('consulta/listado','AtencionPacienteController@index')->name('atencion.index');
 Route::get('consulta/{id}','AtencionPacienteController@show')->name('atencion.show');
 
+
+});
 
 
