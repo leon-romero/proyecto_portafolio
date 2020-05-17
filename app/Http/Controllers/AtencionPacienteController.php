@@ -16,8 +16,20 @@ class AtencionPacienteController extends Controller
     }
 
     public function show($id){
-        return $id;
+
         $r=Reserva::where('id_reservar_hora',$id)->where('activo',1)->firstOrFail();
-        return view('odontologo.index',compact('r'));
+        return view('odontologo.show',compact('r'));
+    }
+
+    public function calendario()
+    {
+        $reservas=Reserva::get();
+        return view('odontologo.calendario',compact('reservas'));
+    }
+
+    
+    public function historial()
+    {
+        return view('odontologo.historial');
     }
 }

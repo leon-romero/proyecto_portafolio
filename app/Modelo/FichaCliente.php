@@ -22,5 +22,4 @@ class FichaCliente extends Authenticatable
     public function nombre_completo(){
         return $this->nombres . " " . $this->apellidos;
     }
-
 }

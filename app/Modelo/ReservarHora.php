@@ -26,4 +26,7 @@ class ReservarHora extends Model
         return $this->belongsTo(Odontologo::class,'id_odontologo');
     }
     
+    public function fecha(){
+		return date_format(date_create($this->fecha_reserva), 'd-m-Y');
+	}
 }

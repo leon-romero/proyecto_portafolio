@@ -24,7 +24,6 @@
                 <th></th>
                 <th>Hora</th>
                 <th>Rut</th>
-                <th>Servicio</th>
                 <th>Nombre Paciente</th>
                 <th></th>
               </tr>
@@ -45,9 +44,9 @@
                     @endif
                   </td>
                   <td>{{ $r->horario->horario }}</td>
-                  <td>{{ $r->servicio->nombre_servicio }}</td>
                   <td>{{ $r->cliente->run }}</td>
                   <td>{{ $r->cliente->nombre_completo() }}</td>
+                  {{-- <td>{{ $r->cliente->run }}</td> --}}
                   <td>
                    @if ($r->id_odontologo>0)
                    <a href="{{ route('atencion.show',$r->id_reservar_hora) }}" class="btn btn-info btn-sm">Ver</a>
