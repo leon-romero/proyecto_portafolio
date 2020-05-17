@@ -96,9 +96,9 @@
 
       @if (auth('odontologo')->check())
       <li class="header">Atención</li>
-      <li><a href="{{ route('atencion.index') }}"><i class="fa fa-clock text-white"></i> <span>Atención</span></a></li>   
-      <li><a href="/home"><i class="fa fa-clock text-white"></i> <span>Calendario</span></a></li>   
-      <li><a href="/home"><i class="fa fa-home text-white"></i> <span>Historial</span></a></li> 
+      <li class="{{ activar('consultas*') }}"><a href="{{ route('atencion.index') }}"><i class="fa fa-clock text-white"></i> <span>Atención</span></a></li>   
+      <li class="{{ activar('consulta/calendario*') }}" ><a href="{{ route('atencion.calendario') }}"><i class="fa fa-calendar text-white"></i> <span>Calendario</span></a></li>   
+      <li class="{{ activar('consulta/historial*') }}"><a href="{{ route('atencion.historial') }}"><i class="fa fa-home text-white"></i> <span>Historial</span></a></li> 
       @endif
 
 

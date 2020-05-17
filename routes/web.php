@@ -56,10 +56,15 @@ Route::post('tomadehora','ReservarHoraController@store')->name('tomadehora.store
 
 
 Route::group(['middleware' => 'acceso.odontologo'], function() {   
-Route::get('consulta/listado','AtencionPacienteController@index')->name('atencion.index');
-Route::get('consulta/{id}','AtencionPacienteController@show')->name('atencion.show');
-
-
+    Route::get('consultas','AtencionPacienteController@index')->name('atencion.index');
+    Route::get('consultas/{id}','AtencionPacienteController@show')->name('atencion.show');
+    Route::put('consultas/{id}','ReservarHoraController@update')->name('atencion.update');
+    
+    Route::get('consulta/calendario','AtencionPacienteController@calendario')->name('atencion.calendario');
+    
+    Route::get('consulta/historial','AtencionPacienteController@historial')->name('atencion.historial');
+    Route::post('consulta/historial','AtencionPacienteController@historialBuscar')->name('atencion.historial.buscar');
+    Route::get('consulta/historial/{rut}','AtencionPacienteController@historialRut')->name('atencion.historial.rut');    
 });
 
 
