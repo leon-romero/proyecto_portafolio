@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Modelo\Horario;
+use App\Modelo\Servicio;
+
+
 class ReservarHoraController extends Controller
 {
     /**

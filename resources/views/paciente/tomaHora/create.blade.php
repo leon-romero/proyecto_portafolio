@@ -6,7 +6,7 @@
 @section('contenido')
 
   <section class="content-header">
-    <h1>Crear paciente</h1>
+    <h1>Bienvenido</h1>
   </section>
   <section class="content">
     <div class="row">
@@ -16,63 +16,35 @@
             <!-- Horizontal Form -->
             <div class="box box-danger">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Formulario de inscripción Pacientes</h3>
+                    <h3 class="box-title">Agenda tu hora.</h3>
                     <br>
-                    <small>(El RUN será el usuario del paciente)</small>
+                    <small></small>
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
-                <form class="form-horizontal" method="post" action="{{ route('paciente.store') }}">
+                <form class="form-horizontal" method="post" action="{{ route('tomadehora.store') }}">
                     @csrf
-                    <div class="box-body">  
-                        <div class="form-group">
-                            <label for="inputNombre" class="col-sm-2 control-label">Run </label>
-                                <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputNombre" name="run" placeholder="Ingrese Run de Paciente...." maxlength="9" min="8" onkeyup="this.value = validarRut(this.value)" required>
-                            </div>
-                        </div>    
-                        <div class="form-group">
-                            <label for="inputNombre" class="col-sm-2 control-label">Nombres</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputNombre" name="nombres" placeholder="Nombre Paciente...." required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputNombre" class="col-sm-2 control-label">Apellidos</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputNombre" name="apellidos" placeholder="Apellidos Paciente...." required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputNombre" class="col-sm-2 control-label">Telefono</label>
-                                <div class="col-sm-10">
-                                <input type="tel" class="form-control" id="inputNombre" name="telefono" placeholder="Ingrese Telefono...." required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputNombre" class="col-sm-2 control-label">Correo</label>
-                                <div class="col-sm-10">
-                                <input type="email" class="form-control" id="inputNombre" name="correo" placeholder="Ingrese Correo...." required>
-                            </div>
-                        </div>
-                        
+                    <div class="box-body">                
                         <div class="row form-group">
-                            <label class="col-sm-2 control-label">Región</label>
+                            <label class="col-sm-2 control-label">Servicio</label>
                             <div class="col-sm-6">
-                                <select class="form-control" id="select_region" name="region" onChange="CargarComunas()">   
+                                <select class="form-control" id="select_servicio" name="servicio">   
                                 </select>
                             </div>
                         </div>
-
                         <div class="row form-group">
-                            <label class="col-sm-2 control-label">direccion</label>
-                            <div class="col-sm-10">
-                                <textarea class="form-control" rows="3" name="direccion" placeholder="..." required></textarea>
+                            <label class="col-sm-2 control-label">Fecha Agenda</label>
+                            <div class="col-sm-6">
+                                <input type="date" id="select_fecha" name="fecha_agenda">   
                             </div>
                         </div>
-                   
-
-
+                        <div class="row form-group">
+                            <label class="col-sm-2 control-label">Hora Disponible</label>
+                            <div class="col-sm-6">
+                                <select class="form-control" id="select_hora" name="hora_disponible">   
+                                </select>
+                            </div>
+                        </div>
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer">
