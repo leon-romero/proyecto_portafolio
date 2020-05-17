@@ -22,10 +22,13 @@
             <thead>
               <tr>
                 <th></th>
+                <th>Fecha</th>
                 <th>Hora</th>
+                <th>Servicio</th>
                 <th>Rut</th>
                 <th>Nombre Paciente</th>
-                <th></th>
+                <th>Odotólogo</th>
+                <th>Comentario Atención</th>
               </tr>
             </thead>
             <tbody>
@@ -43,17 +46,13 @@
                       @endif
                     @endif
                   </td>
+                  <td>{{ $r->fecha() }}</td>
                   <td>{{ $r->horario->horario }}</td>
+                  <td>{{ $r->servicio->nombre_servicio }}</td>
                   <td>{{ $r->cliente->run }}</td>
                   <td>{{ $r->cliente->nombre_completo() }}</td>
-                  {{-- <td>{{ $r->cliente->run }}</td> --}}
-                  <td>
-                   @if ($r->id_odontologo>0)
-                   <a href="{{ route('atencion.show',$r->id_reservar_hora) }}" class="btn btn-info btn-sm">Ver</a>
-                   @else
-                   <a href="{{ route('atencion.show',$r->id_reservar_hora) }}" class="btn btn-success btn-sm">Atender</a>
-                   @endif
-                  </td>
+                  <td>{{ $r->odontologo->nombre_completo() }}</td>
+                  <td>{{ $r->comentario }}</td>
                 </tr>
                 @endforeach
               @endif

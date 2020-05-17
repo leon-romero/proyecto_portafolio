@@ -56,7 +56,7 @@ $estados = array('Espera' => 1, 'Atendido' => 2 , 'Cancelado' => 3 );
               @if ($r->id_estado_reserva!=2)
               <div class="form-group col-sm-12">
                 <label>Comentario de la Atención</label>
-                <textarea class="form-control" rows="3" name="direccion" placeholder="..." required></textarea>
+                <textarea class="form-control" rows="3" name="comentario" placeholder="..." required>{{ $r->comentario ?? '' }}</textarea>
               </div>
               <div class="form-group col-sm-12">
                 <label>Estado de la consulta</label>
@@ -69,14 +69,14 @@ $estados = array('Espera' => 1, 'Atendido' => 2 , 'Cancelado' => 3 );
                       @else
                         <option value="{{ $value }}">{{ $key }}</option>   
                       @endif
-                    @endforeach                     
+                    @endforeach
                   </select>
                 </div>
               </div>
               @else
               <div class="form-group col-sm-12">
                 <label>Comentario de la Atención</label>
-                <textarea class="form-control" disabled rows="3" name="direccion" placeholder="..." required>{{ $r->comentario }}</textarea>
+                <textarea class="form-control" disabled rows="3" name="comentario" placeholder="..." required>{{ $r->comentario }}</textarea>
               </div>
               @endif
             
