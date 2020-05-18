@@ -41,22 +41,38 @@ class ReservarHoraController extends Controller
     public function store(Request $request)
     {
         try {
-            $rh = new ReservarHora();
-            $rh->id_reservar_hora = $request->input('id_reservar_hora');
-            $rh->id_centro        = $request->input('id_centro');//null
-            $rh->fecha_reserva    = $request->input('fecha_reserva');
-            $rh->id_horario       = $request->input('id_horario');
-            $rh->id_odontologo    = $request->input('id_odotologo');
-            $rh->comentario       = null;
-            $rh->activo           = 1;
-            $rh->id_ficha_cliente = $request->input('id_ficha_cliente');
-            $rh->id_estado_reserva   = $request->input('id_estado_reserva');
-            $rh->id_servicio      = $request->input('id_servicio');  
-            $rh->save();
-            return redirect()->route('paciente.index')->with('success','Se ha creado correctamente.');
+            $fecha = date_format(date_create($request->input('fecha_reserva')),'Y-m-d');
+            $horario = $request->input('id_horario');
+            if ($this->isDisponible($fecha,$horario)) {
+                $rh = new ReservarHora();
+                $rh->id_centro = 1;
+                $rh->fecha_reserva = $fecha;
+                $rh->id_horario = $horario;
+                $rh->id_odontologo = 0;
+                $rh->comentario = null;
+                $rh->activo = 1;
+                $rh->id_ficha_cliente = auth('cliente')->user()->id_ficha_cliente;
+                $rh->id_estado_reserva = 1;
+                $rh->id_servicio = $request->input('id_servicio');  
+                $rh->save();
+                return back()->with('success','Se ha creado correctamente.');
+            } else {
+                return back()->with('info','la hora ya esta solicitada.');
+            }  
         } catch (\Throwable $th) {
             return back()->with('info','Error Intente nuevamente.');
         }
+    }
+
+    public function isDisponible($fecha,$id_horario){
+        
+        try {
+            $r = ReservarHora::where('fecha_reserva',$fecha)->where('id_horario',$id_horario)->firstOrFail();
+            return false;
+        } catch (\Throwable $th) {
+            return true;
+        }
+    
     }
 
     /**
@@ -65,9 +81,15 @@ class ReservarHoraController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        try {
+            $reservas = ReservarHora::where('id_ficha_cliente',auth('cliente')->user()->id_ficha_cliente)->get();
+            return view('paciente.tomaHora.historial',compact('reservas','c'));
+        } catch (\Throwable $th) {
+            return back()->with('info','Error Intente nuevamente.');
+            // return $th;
+        }
     }
 
     /**

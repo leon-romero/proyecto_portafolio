@@ -2,11 +2,7 @@
 
 @section('contenido')
 <section class="content-header">
-  <h1>Lista de Pacientes</h1>
-  {{-- <ol class="breadcrumb"> --}}
-    {{-- <li><a href=""><i class="fa fa-home"></i> Home</a></li> --}}
-    {{-- <li class="active">Clientes</li> --}}
-  {{-- </ol> --}}
+  <h1>Historial atención paciente</h1>
 </section>
 <section class="content">
   <div class="row">
@@ -14,47 +10,64 @@
     {{-- Alerta de mensaje --}}
     @include('layout.alerta')
     {{-- Alerta de mensaje --}}
+  </div>
+      
 
+  <div class="row">
     <div class="col-md-12">
       <div class="box">
-        <div class="box-header">
-          <h3 class="box-title">Todos los Pacientes</h3>
+        <div class="box-header with-border">
+          <h3 class="box-title">Paciente</h3>
+          <br>
         </div>
-        <div class="col-md-12 text-center">
-          <a href="{{ route('paciente.create')}}" class="btn btn-success btn-sm"><i class="fa fa-user-plus"></i> Nuevo Paciente</a>
-        </div>
-        <br>
-        <br>
         <!-- /.box-header -->
         <div class="box-body table-responsive">
           <table id="tabla" class="datatable table table-striped table-sm " cellspacing="0" width="100%">
             <thead>
               <tr>
-                <th>#</th>
-                <th>RUN</th>
-                <th>Nombres</th>
-                <th>Correo</th>
                 <th></th>
-                {{-- <th></th> --}}
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Servicio</th>
+                {{-- <th>Rut</th> --}}
+                {{-- <th>Nombre Paciente</th> --}}
+                <th>Odotólogo</th>
+                <th>Comentario Atención</th>
               </tr>
             </thead>
             <tbody>
-              @if (count($pacientes)>0 )
-              @php
-                  $i=1;
-              @endphp  
-              @foreach ($pacientes as $p)
+              @if (count($reservas)>0 ) 
+              @foreach ($reservas as $r)
                 <tr>
-                  <td>{{ $i++ }}</td>
-                  <td>{{ $p->run }}</td>
-                  <td>{{ $p->nombre_completo() }}</td>
-                  <td>{{ $p->correo }}</td>
                   <td>
-                    <a href="{{ route('paciente.documento.index',$p->run) }}" class="btn btn-danger btn-sm">Documento 
-                      {{-- <i class="fa fa-file"></i> --}}
-                    </a>
-                    {{-- <a href="" class="btn btn-primary btn-sm">Direcciones <i class="fa fa-home"></i></a> --}}
-                    <a href="{{ route('paciente.edit',$p->run) }}" class="btn btn-info btn-sm">Editar <i class="fa fa-edit"></i></a>
+                    @if ($r->id_estado_reserva==1)
+                      <strong class="label label-warning">Espera</strong>
+                    @else
+                      @if ($r->id_estado_reserva==2)
+                      <strong class="label label-success">Atendido</strong>
+                      @else
+                      <strong class="label label-danger">Cancelado</strong>
+                      @endif
+                    @endif
+                  </td>
+                  <td>{{ $r->fecha() }}</td>
+                  <td>{{ $r->horario->horario }}</td>
+                  <td>{{ $r->servicio->nombre_servicio }}</td>
+                  {{-- <td>{{ $r->cliente->run }}</td> --}}
+                  {{-- <td>{{ $r->cliente->nombre_completo() }}</td> --}}
+                  <td>
+                    @if (!empty($r->odontologo))
+                      {{ $r->odontologo->nombre_completo() }}
+                    @else
+                      no asignado
+                    @endif
+                  </td>
+                  <td>
+                    @if (!empty($r->comentario))
+                      {{ $r->comentario }}
+                    @else
+                        -- 
+                    @endif
                   </td>
                 </tr>
                 @endforeach
@@ -66,4 +79,6 @@
     </div>
   </div>
 </section>
+@stop
+@section('scripts')
 @stop

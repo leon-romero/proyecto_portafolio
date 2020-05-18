@@ -14,7 +14,7 @@
 
         <div class="col-md-6">
             <!-- Horizontal Form -->
-            <div class="box box-danger">
+            <div class="box box-primary">
                 <div class="box-header with-border">
                     <h3 class="box-title">Agenda tu hora.</h3>
                     <br>
@@ -28,7 +28,7 @@
                         <div class="row form-group">
                             <label class="col-sm-2 control-label">Servicio</label>
                             <div class="col-sm-6">
-                                <select class="form-control" id="select_servicio" name="servicio" required>
+                                <select class="form-control" id="id_servicio" name="id_servicio" required>
                                     @foreach ($servicios as $s)
                                         <option value="{{ $s->id_servicio }}">{{ $s->nombre_servicio }}</option> 
                                      @endforeach   
@@ -38,7 +38,7 @@
                         <div class="row form-group">
                             <label class="col-sm-2 control-label">Fecha Agenda</label>
                             <div class="col-sm-6">
-                                <input type="date" id="fecha_agenda" name="fecha_agenda" onChange="CargarHorario()" value="{{date('Y-m-d')}}" required>   
+                                <input type="date" id="fecha_reserva" name="fecha_reserva" onChange="CargarHorario()" value="{{date('Y-m-d')}}" required>   
                             </div>
                         </div>
                         <div class="row form-group">
@@ -51,8 +51,7 @@
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer">
-                        <a href="{{ route('paciente.index') }}" class="btn btn-danger pull-left">Volver</a>
-                        <button type="submit" class="btn btn-success pull-right">Agregar</button>
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">Inscribir</button>
                     </div>
                 </form>
             </div>
@@ -78,7 +77,7 @@
     <script>
 		CargarHorario();
         function CargarHorario() {
-            var fecha = document.getElementById('fecha_agenda').value;
+            var fecha = document.getElementById('fecha_reserva').value;
 			console.log(fecha);
 			
             url = '/api/horadisponible/' + fecha;

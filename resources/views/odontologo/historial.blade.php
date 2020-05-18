@@ -96,8 +96,20 @@
                   <td>{{ $r->servicio->nombre_servicio }}</td>
                   {{-- <td>{{ $r->cliente->run }}</td> --}}
                   {{-- <td>{{ $r->cliente->nombre_completo() }}</td> --}}
-                  <td>{{ $r->odontologo->nombre_completo() }}</td>
-                  <td>{{ $r->comentario }}</td>
+                  <td>
+                    @if (!empty($r->odontologo))
+                      {{ $r->odontologo->nombre_completo() }}
+                    @else
+                      no asignado
+                    @endif
+                  </td>
+                  <td>
+                    @if (!empty($r->comentario))
+                      {{ $r->comentario }}
+                    @else
+                        -- 
+                    @endif
+                  </td>
                 </tr>
                 @endforeach
               @endif
