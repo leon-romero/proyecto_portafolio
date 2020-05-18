@@ -28,20 +28,23 @@
                         <div class="row form-group">
                             <label class="col-sm-2 control-label">Servicio</label>
                             <div class="col-sm-6">
-                                <select class="form-control" id="select_servicio" name="servicio">   
+                                <select class="form-control" id="select_servicio" name="servicio" required>
+                                    @foreach ($servicios as $s)
+                                        <option value="{{ $s->id_servicio }}">{{ $s->nombre_servicio }}</option> 
+                                     @endforeach   
                                 </select>
                             </div>
                         </div>
                         <div class="row form-group">
                             <label class="col-sm-2 control-label">Fecha Agenda</label>
                             <div class="col-sm-6">
-                                <input type="date" id="select_fecha" name="fecha_agenda">   
+                                <input type="date" id="fecha_agenda" name="fecha_agenda" onChange="CargarHorario()" value="{{date('Y-m-d')}}" required>   
                             </div>
                         </div>
                         <div class="row form-group">
                             <label class="col-sm-2 control-label">Hora Disponible</label>
                             <div class="col-sm-6">
-                                <select class="form-control" id="select_hora" name="hora_disponible">   
+                                <select class="form-control" id="id_horario" name="id_horario" required>   
                                 </select>
                             </div>
                         </div>
@@ -72,4 +75,30 @@
             return out;
         }
     </script>
+    <script>
+		CargarHorario();
+        function CargarHorario() {
+            var fecha = document.getElementById('fecha_agenda').value;
+			console.log(fecha);
+			
+            url = '/api/horadisponible/' + fecha;
+            fetch(url)
+                .then(resp=>{
+                    return resp.json();
+                }).then(result =>{
+                    console.log(result);
+                    console.log(url);
+					var $select = $('#id_horario');
+                    $select.find('option').remove();
+                    // alert(options);
+                    $.each(result, function(key,value) {
+						if(value.activo==1){
+							$select.append('<option value=' + value.id_horario + '>' + value.horario + '</option>');
+						}else{
+							$select.append('<option disabled="disabled" value=' + value.id_horario + '>' + value.horario + ' (reservado) </option>');
+						}                     
+                   });                    
+            });
+        }   
+	</script>	
 @stop

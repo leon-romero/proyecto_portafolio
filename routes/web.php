@@ -46,7 +46,6 @@ Route::group(['middleware' => 'acceso.empleado'], function() {
 Route::group(['middleware' => 'acceso.cliente'], function() {   
 // formulario servicios, fecha , hora
 Route::get('homeCliente', function () { return view('paciente.index'); })->name('home.cliente');
-//nuevo (Reservar_hora)
 Route::get('tomadehora','ReservarHoraController@create')->name('tomadehora.create');
 Route::post('tomadehora','ReservarHoraController@store')->name('tomadehora.store');
 });

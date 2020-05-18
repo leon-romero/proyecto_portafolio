@@ -40,7 +40,23 @@ class ReservarHoraController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $rh = new ReservarHora();
+            $rh->id_reservar_hora = $request->input('id_reservar_hora');
+            $rh->id_centro        = $request->input('id_centro');//null
+            $rh->fecha_reserva    = $request->input('fecha_reserva');
+            $rh->id_horario       = $request->input('id_horario');
+            $rh->id_odontologo    = $request->input('id_odotologo');
+            $rh->comentario       = null;
+            $rh->activo           = 1;
+            $rh->id_ficha_cliente = $request->input('id_ficha_cliente');
+            $rh->id_estado_reserva   = $request->input('id_estado_reserva');
+            $rh->id_servicio      = $request->input('id_servicio');  
+            $rh->save();
+            return redirect()->route('paciente.index')->with('success','Se ha creado correctamente.');
+        } catch (\Throwable $th) {
+            return back()->with('info','Error Intente nuevamente.');
+        }
     }
 
     /**
