@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Modelo\ReservarHora as Reserva;
+use App\Modelo\FichaCliente as Cliente;
+
 
 class AtencionPacienteController extends Controller
 {
@@ -30,6 +32,26 @@ class AtencionPacienteController extends Controller
     
     public function historial()
     {
-        return view('odontologo.historial');
+        $reservas = array();
+        $c = null;
+        return view('odontologo.historial',compact('reservas','c'));
+    }
+
+    
+    public function historialBuscar(Request $request)
+    {
+        return redirect()->route('atencion.historial.rut',$request->input('run'));
+    }
+    
+    public function historialRut($run)
+    {
+        try {
+            $c = Cliente::where('run',$run)->firstOrFail();
+            $reservas = Reserva::where('id_ficha_cliente',$c->id_ficha_cliente)->get();
+            return view('odontologo.historial',compact('reservas','c'));
+        } catch (\Throwable $th) {
+            return back()->with('info','Error Intente nuevamente.');
+            // return $th;
+        }
     }
 }
