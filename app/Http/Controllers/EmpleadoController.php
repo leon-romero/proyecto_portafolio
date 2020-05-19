@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Modelo\Empleado;
 use App\Modelo\TipoEmpleado;
 
+use App\Http\Requests\CreateEmpleadoRequest as RequestEmpleado;
 
 class EmpleadoController extends Controller
 {
@@ -38,7 +39,7 @@ class EmpleadoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RequestEmpleado $request)
     {
         try {
             // return $request;

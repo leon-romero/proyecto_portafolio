@@ -7,6 +7,8 @@ use App\Modelo\FichaProveedor;
 use App\Modelo\DetalleProveedor as Detalle;
 use App\Modelo\Producto;
 
+use App\Http\Requests\CreateProveedorRequest as RequestProveedor;
+
 class FichaProveedorController extends Controller
 {
     /**
@@ -36,7 +38,7 @@ class FichaProveedorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RequestProveedor $request)
     {
         try {
             // return $request;

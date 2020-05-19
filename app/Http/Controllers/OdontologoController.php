@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Modelo\Odontologo;
 
+use App\Http\Requests\CreateOdontologoRequest as RequestOdontologo;
+
 class OdontologoController extends Controller
 {
     /**
@@ -14,7 +16,7 @@ class OdontologoController extends Controller
      */
     public function index()
     {
-        $odontologos=Odontologo::get();    
+        $odontologos=Odontologo::get();
         //  return $odontologos;
        return view('admin.odontologo.index',compact('odontologos'));
     }
@@ -37,7 +39,7 @@ class OdontologoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RequestOdontologo $request)
     {
         try {
             // return $request;
