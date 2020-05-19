@@ -27,7 +27,7 @@
                         <div class="form-group">
                             <label for="inputNombre" class="col-sm-4 control-label">Nombre Servicio</label>
                                 <div class="col-sm-8">
-                                <input type="text" class="form-control" id="inputNombre" name="nombre_servicio" placeholder="Ingrese nombre de servicio...." required>
+                                <input type="text" class="form-control" id="inputNombre" name="nombre_servicio" value="{{ old('nombre_servicio') }}" placeholder="Ingrese nombre de servicio...." required>
                             </div>
                         </div>    
                     </div>

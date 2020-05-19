@@ -27,25 +27,25 @@
                         <div class="form-group">
                             <label for="inputNombre" class="col-sm-2 control-label">Nombre producto</label>
                                 <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputNombre" name="nombre_producto" placeholder="Ingrese nombre producto ...." required>
+                                <input type="text" class="form-control" id="inputNombre" value="{{ old('nombre_producto') }}" name="nombre_producto" placeholder="Ingrese nombre producto ...." required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputNombre" class="col-sm-2 control-label">Descripción</label>
                                 <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputNombre" name="descripcion" placeholder="...." required>
+                                <input type="text" class="form-control" id="inputNombre" value="{{ old('descripcion') }}" name="descripcion" placeholder="...." required>
                             </div>
                         </div>    
                         <div class="form-group">
                             <label for="inputNombre" class="col-sm-2 control-label">Stock</label>
                             <div class="col-sm-10">
-                                <input type="number" class="form-control" id="inputNombre" name="stock" placeholder="" value="0" required>
+                                <input type="number" class="form-control" id="inputNombre" name="stock" placeholder="" value="{{ old('stock') }}" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputNombre" class="col-sm-2 control-label">Stock Cricito</label>
                             <div class="col-sm-10">
-                                <input type="number" class="form-control" id="inputNombre" name="stock_critico" placeholder="" value="0" required>
+                                <input type="number" class="form-control" id="inputNombre" name="stock_critico" placeholder="" value="{{ old('stock_critico') }}" required>
                             </div>
                         </div>
                     </div>

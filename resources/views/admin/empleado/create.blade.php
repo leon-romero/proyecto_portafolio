@@ -28,40 +28,33 @@
                         <div class="form-group">
                             <label for="inputNombre" class="col-sm-2 control-label">Run </label>
                                 <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputNombre" name="run" placeholder="Ingrese Run de Empleado...." required>
+                                <input type="text" class="form-control" id="inputNombre" name="run" value="{{ old('run') }}" placeholder="Ingrese Run de Empleado...." required>
                             </div>
                         </div>    
                         <div class="form-group">
                             <label for="inputNombre" class="col-sm-2 control-label">Nombres</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputNombre" name="nombres" placeholder="Nombre Empleado...." required>
+                                <input type="text" class="form-control" id="inputNombre" name="nombres" value="{{ old('nombres') }}" placeholder="Nombre Empleado...." required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputNombre" class="col-sm-2 control-label">Apellidos</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputNombre" name="apellidos" placeholder="Apellidos Empleado...." required>
+                                <input type="text" class="form-control" id="inputNombre" name="apellidos" value="{{ old('apellidos') }}" placeholder="Apellidos Empleado...." required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputNombre" class="col-sm-2 control-label">Telefono</label>
                                 <div class="col-sm-10">
-                                <input type="tel" class="form-control" id="inputNombre" name="telefono" placeholder="Ingrese Telefono...." required>
+                                <input type="tel" class="form-control" id="inputNombre" name="telefono" value="{{ old('telefono') }}" placeholder="Ingrese Telefono...." required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputNombre" class="col-sm-2 control-label">Correo</label>
                                 <div class="col-sm-10">
-                                <input type="email" class="form-control" id="inputNombre" name="correo" placeholder="Ingrese Correo...." required>
+                                <input type="email" class="form-control" id="inputNombre" name="correo" value="{{ old('correo') }}" placeholder="Ingrese Correo...." required>
                             </div>
                         </div>
-                        
- 
-
-
-
-                        
-
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer">

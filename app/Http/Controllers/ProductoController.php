@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Modelo\Producto;
 use Illuminate\Http\Request;
 
+use App\Http\Requests\CreateProductoRequest as RequestProducto;
+
 class ProductoController extends Controller
 {
     /**
@@ -34,7 +36,7 @@ class ProductoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RequestProducto $request)
     {
         try {
             $p = new Producto();

@@ -11,6 +11,9 @@ use App\Modelo\Region;
 use App\Modelo\Documento;
 use App\Modelo\DetalleDocumento;
 
+use App\Http\Requests\CreateClienteRequest as RequestCliente;
+
+
 class FichaClienteController extends Controller
 {
     /**
@@ -43,7 +46,7 @@ class FichaClienteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RequestCliente $request)
     {
         try {
             // return $request;
