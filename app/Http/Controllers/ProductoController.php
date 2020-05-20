@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Modelo\Producto;
 use Illuminate\Http\Request;
 
-use App\Http\Requests\CreateProductoRequest as RequestProducto;
+use App\Http\Requests\CreateProductoRequest;
 
 class ProductoController extends Controller
 {
@@ -36,14 +36,14 @@ class ProductoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(RequestProducto $request)
+    public function store(CreateProductoRequest $request)
     {
         try {
             $p = new Producto();
-            $p->nombre_producto = $request->nombre_producto;
-            $p->stock = $request->stock;
-            $p->stock_critico = $request->stock_critico;
-            $p->descripcion = $request->descripcion;
+            $p->nombre_producto = $request->input('nombre_producto');
+            $p->descripcion = $request->input('descripcion');
+            $p->stock = $request->input('stock');
+            $p->stock_critico = $request->input('stock_critico');
             $p->precio_compra = 0;
             $p->precio_venta = 0;
             $p->id_familia = 1;
@@ -91,10 +91,10 @@ class ProductoController extends Controller
     {
         try {
             $p = Producto::where('id_producto',$id)->firstOrFail();
-            $p->nombre_producto = $request->nombre_producto;
-            $p->stock = $request->stock;
-            $p->stock_critico = $request->stock_critico;
-            $p->descripcion = $request->descripcion;
+            $p->nombre_producto = $request->input('nombre_producto');
+            $p->descripcion = $request->input('descripcion');
+            $p->stock = $request->input('stock');
+            $p->stock_critico = $request->input('stock_critico');
             $p->update();
             return back()->with('success','Se ha actualizado correctamente');
         } catch (\Throwable $th) {

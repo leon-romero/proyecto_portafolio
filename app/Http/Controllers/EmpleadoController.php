@@ -52,7 +52,7 @@ class EmpleadoController extends Controller
             $em->telefono                = $request->input('telefono');
             $em->correo                  = $request->input('correo');
             $em->id_tipo_empleado        = 1; //por ahora no hay tipos de empleados, pero está modelado para tipos de empleados
-            $em->bloqueado                 = 0;
+            $em->bloqueado               = 0;
             $em->activo                  = 1;
             $em->save();
             return redirect()->route('empleado.index')->with('success','Se ha creador correctamente.');

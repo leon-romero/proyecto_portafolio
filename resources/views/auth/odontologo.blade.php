@@ -88,9 +88,7 @@ body {
   
   <div class="login-box">
     <div class="login-logo">
-      {{-- //TODO: Aca ingresar --}}
       <h1 class="colorBlanco"><b>Linda</b>Sonrisa</h1>
-    
     </div>
     {{-- <h4 class="text-white">Acceso</h4> --}}
     <div class="login-box-body">
@@ -101,14 +99,26 @@ body {
           {!! session('info') !!}
         </div>
       @endif
+      @if (count($errors))
+      <div class="alert alert-danger">
+          <button type="button" class="close" data-dismiss="alert">
+              &times;
+          </button>
+          <ul>
+              @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+              @endforeach
+          </ul>
+      </div>
+      @endif
       <form class="form-signin" action="{{ route('login.odontologo') }}" method="POST">
         @csrf
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Usuario" name="username" autofocus required>
+          <input type="text" class="form-control" placeholder="Usuario" name="username" value="{{ old('username') }}" autofocus required>
           <span class="glyphicon glyphicon-user form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="password" class="form-control" placeholder="Contraseña" autocomplete="off" name="password" required>
+          <input type="password" class="form-control" placeholder="Contraseña" autocomplete="off"  name="password" required>
           <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
         <div class="row">
@@ -127,7 +137,6 @@ body {
           </div> --}}
         </div> 
       </form>   
-      
     </div>
   </div>
   <script src="/dist/jquery.min.js"></script>

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateOdontologoRequest extends FormRequest
+class LoginRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,11 +24,8 @@ class CreateOdontologoRequest extends FormRequest
     public function rules()
     {
         return [
-            'run' => 'required|regex:/^\d{7,8}[0-9K]{1}$/|unique:odontologo,run',
-            'nombres' => 'required|min:2|max:100',
-            'apellidos' => 'required|min:2|max:100',
-            'telefono' => 'required|min:7|max:9',
-            'correo' => 'required|min:4|max:100|email|unique:odontologo,correo',
+            'username'=>'required|min:4|max:30',
+            'password'=>'required|min:4|max:30',
         ];
     }
 }

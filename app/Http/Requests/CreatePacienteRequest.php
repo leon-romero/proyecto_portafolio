@@ -24,7 +24,7 @@ class CreatePacienteRequest extends FormRequest
     public function rules()
     {
         return [
-            'run' => 'required|regex:/^\d{7,8}[0-9K]{1}$/|run|unique:ficha_cliente,run',
+            'run' => 'required|regex:/^\d{7,8}[0-9K]{1}$/|unique:ficha_cliente,run',
             'nombres' => 'required|min:2|max:100',
             'apellidos' => 'required|min:2|max:100',
             'telefono' => 'required|min:7|max:9',

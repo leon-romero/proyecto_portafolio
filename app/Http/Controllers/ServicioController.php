@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Modelo\Servicio;
 use Illuminate\Http\Request;
 
+use App\Http\Requests\CreateServicioRequest as ServicioRequest;
+
+
 class ServicioController extends Controller
 {
     public function index()
@@ -20,7 +23,7 @@ class ServicioController extends Controller
     }
 
     
-    public function store(Request $request)
+    public function store(ServicioRequest $request)
     {
         try {
             $s = new Servicio();

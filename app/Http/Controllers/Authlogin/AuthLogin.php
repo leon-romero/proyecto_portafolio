@@ -4,14 +4,15 @@ namespace App\Http\Controllers\Authlogin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Modelo\FichaProveedor as Proveedor;
+
 use App\Modelo\Empleado;
 use App\Modelo\Odontologo;
 use App\Modelo\FichaCliente as Cliente;
+use App\Modelo\FichaProveedor as Proveedor;
+
+use App\Http\Requests\LoginRequest;
 
 use Auth;
-
-// use App\Http\Requests\AuthLoginRequest as AuthRequest;
 
 class AuthLogin extends Controller
 {
@@ -20,7 +21,7 @@ class AuthLogin extends Controller
         return view('auth.index');
     }
 
-    public function loginEmpleado(Request $request){
+    public function loginEmpleado(LoginRequest $request){
         try {
             $this->cerrar();
             $e = Empleado::where('username',$request->username)->firstOrFail();
@@ -29,17 +30,14 @@ class AuthLogin extends Controller
             if($e->password==$pass){
                 Auth::guard('empleado')->loginUsingId($e->id_empleado);
                 return redirect()->route('home');
-                // return auth('empleado')->user();
             }else{
-                // return back()->with('info','Error. Intente nuevamente.');
-                return "nada";
+                return back()->with('info','Error. Intente nuevamente.');
             }
         } catch (\Throwable $th) {
-            // return back()->with('info','Error. Intente nuevamente.');
-            return $th;
+            return back()->with('info','Error. Intente nuevamente.');
         }
     }
-    public function loginCliente(Request $request){
+    public function loginCliente(LoginRequest $request){
         try {
             $this->cerrar();
             $c = Cliente::where('username',$request->username)->firstOrFail();
@@ -48,17 +46,14 @@ class AuthLogin extends Controller
             if($c->password==$pass){
                 Auth::guard('cliente')->loginUsingId($c->id_ficha_cliente);
                 return redirect()->route('home.cliente');
-                // return auth('empleado')->user();
             }else{
-                // return back()->with('info','Error. Intente nuevamente.');
-                return "nada";
+                return back()->with('info','Error. Intente nuevamente.');
             }
         } catch (\Throwable $th) {
-            // return back()->with('info','Error. Intente nuevamente.');
-            return $th;
+            return back()->with('info','Error. Intente nuevamente.');
         }
     }
-    public function loginProveedor(Request $request){
+    public function loginProveedor(LoginRequest $request){
         try {
             $this->cerrar();
             $p = Proveedor::where('username',$request->username)->firstOrFail();
@@ -67,17 +62,14 @@ class AuthLogin extends Controller
             if($p->password==$pass){
                 Auth::guard('proveedor')->loginUsingId($p->id_ficha_proveedor);
                 return redirect()->route('home');
-                // return auth('empleado')->user();
             }else{
-                // return back()->with('info','Error. Intente nuevamente.');
-                return "nada";
+                return back()->with('info','Error. Intente nuevamente.');
             }
         } catch (\Throwable $th) {
-            // return back()->with('info','Error. Intente nuevamente.');
-            return $th;
+            return back()->with('info','Error. Intente nuevamente.');
         }
     }
-    public function loginOdontologo(Request $request){
+    public function loginOdontologo(LoginRequest $request){
         try {
             $this->cerrar();
             $o = Odontologo::where('username',$request->username)->firstOrFail();
@@ -87,12 +79,10 @@ class AuthLogin extends Controller
                 Auth::guard('odontologo')->loginUsingId($o->id_odontologo);
                 return redirect()->route('home');
             }else{
-                // return back()->with('info','Error. Intente nuevamente.');
-                return "nada";
+                return back()->with('info','Error. Intente nuevamente.');
             }
         } catch (\Throwable $th) {
-            // return back()->with('info','Error. Intente nuevamente.');
-            return $th;
+            return back()->with('info','Error. Intente nuevamente.');
         }
     }
 
