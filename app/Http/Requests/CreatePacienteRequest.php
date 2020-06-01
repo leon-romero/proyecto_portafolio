@@ -30,7 +30,7 @@ class CreatePacienteRequest extends FormRequest
             'telefono' => 'required|min:7|max:9',
             'correo' => 'required|min:4|max:100|email|unique:ficha_cliente,correo',
             'region' => 'required|exists:region,id_region',
-            'comuna' => 'required|exists:comunda,id_comuna',
+            'id_comuna' => 'required|exists:comuna,id_comuna',
             'direccion' => 'required|min:2|max:200',
         ];
     }

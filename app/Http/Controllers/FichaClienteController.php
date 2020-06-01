@@ -11,7 +11,8 @@ use App\Modelo\Region;
 use App\Modelo\Documento;
 use App\Modelo\DetalleDocumento;
 
-use App\Http\Requests\CreateClienteRequest as RequestCliente;
+use App\Http\Requests\CreatePacienteRequest as RequestCliente;
+
 
 
 class FichaClienteController extends Controller
