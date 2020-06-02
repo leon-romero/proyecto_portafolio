@@ -7,7 +7,7 @@
 
   <section class="content-header">
     <h1>
-      Buenos Dias Administrador
+      Buenos Dias
       <small> Una linda sonrisa alegra el dia</small>
     </h1>
   </section>
