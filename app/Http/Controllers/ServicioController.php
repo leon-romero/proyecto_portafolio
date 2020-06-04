@@ -46,7 +46,7 @@ class ServicioController extends Controller
      */
     public function edit($id)
     {
-        $s=Servicio::firstOrFail();    
+        $s=Servicio::where('id_servicio',$id)->firstOrFail();    
         return view('admin.servicio.edit',compact('s'));
     }
 

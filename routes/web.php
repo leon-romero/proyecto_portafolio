@@ -69,3 +69,33 @@ Route::group(['middleware' => 'acceso.odontologo'], function() {
 });
 
 
+
+
+Route::get('procedure', function(){
+
+ 
+
+    // $clientes = DB::select('call proce_read_all_cliente()');
+    // return $clientes;
+
+    $model = new App\Modelo\Ficha_cliente();
+    $cliente = $model->hydrate(
+        DB::select('call proce_read_cliente($id)')
+    );
+    return $cliente;
+
+});
+Route::get('procedure/{id}', function($id){
+
+ 
+
+    // $clientes = DB::select('call proce_read_all_cliente()');
+    // return $clientes;
+
+    $model = new App\Modelo\FichaCliente();
+    $cliente = $model->hydrate(
+        DB::select("call proce_read_cliente($id)")
+    );
+    return $cliente;
+
+});
