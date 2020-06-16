@@ -98,7 +98,7 @@ return [
         ],
         'cliente' => [
             'driver' => 'eloquent',
-            'model' => App\Modelo\FichaCLiente::class,
+            'model' => App\Modelo\FichaCliente::class,
         ],
         'proveedor' => [
             'driver' => 'eloquent',

@@ -75,29 +75,32 @@
         }
     </script>
     <script>
-		CargarHorario();
-        function CargarHorario() {
-            var fecha = document.getElementById('fecha_reserva').value;
-			console.log(fecha);
-			
-            url = '/api/horadisponible/' + fecha;
-            fetch(url)
-                .then(resp=>{
-                    return resp.json();
-                }).then(result =>{
-                    console.log(result);
-                    console.log(url);
-					var $select = $('#id_horario');
-                    $select.find('option').remove();
-                    // alert(options);
-                    $.each(result, function(key,value) {
-						if(value.activo==1){
-							$select.append('<option value=' + value.id_horario + '>' + value.horario + '</option>');
-						}else{
-							$select.append('<option disabled="disabled" value=' + value.id_horario + '>' + value.horario + ' (reservado) </option>');
-						}                     
-                   });                    
+        
+    CargarHorario();
+    function CargarHorario() {
+        var fecha = document.getElementById('fecha_reserva').value;
+
+        var date = "{{ date('Y-m-d') }}";
+        url = '/api/horadisponible/' + fecha;
+        fetch(url)
+            .then(resp=>{
+                return resp.json();
+            }).then(result =>{
+                var $select = $('#id_horario');
+                $select.find('option').remove();
+                // alert(options);
+                $.each(result, function(key,value) {
+                    if(value.activo==1){
+                        if(date == fecha ){
+                            $select.append('<option disabled="disabled" value=' + value.id_horario + '>' + value.horario + ' (No disponible) </option>');
+                        }else{
+                            $select.append('<option value=' + value.id_horario + '>' + value.horario + '</option>');
+                        }
+                    }else{
+                        $select.append('<option disabled="disabled" value=' + value.id_horario + '>' + value.horario + ' (reservado) </option>');
+                    }                     
+                });                    
             });
-        }   
+    }   
 	</script>	
 @stop
