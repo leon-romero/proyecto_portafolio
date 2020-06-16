@@ -1,20 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
-<!-- Basic -->
-
+<html lang="es">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
     <!-- Site Metas -->
-    <title>Create CV Resume - Responsive HTML5 Template</title>
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
+    <title>Linda Sonrisa | Atención Dental</title>
+    {{-- <meta name="keywords" content=""> --}}
+    {{-- <meta name="description" content=""> --}}
+    {{-- <meta name="author" content=""> --}}
     <!-- Site Icons -->
     <link rel="shortcut icon" href="#" type="image/x-icon" />
     <link rel="apple-touch-icon" href="#" />
@@ -38,17 +33,11 @@
 </head>
 
 <body id="home" data-spy="scroll" data-target="#navbar-wd" data-offset="98">
-
-    <!-- LOADER -->
     <div id="preloader">
         <div class="loader">
             <img src="/intro/images/loader.gif" alt="#" />
         </div>
     </div>
-    <!-- end loader -->
-    <!-- END LOADER -->
-
-    <!-- Start header -->
     <header class="top-header">
         <nav class="navbar header-nav navbar-expand-lg">
             <div class="container-fluid">
@@ -77,55 +66,51 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="pogoSlider" id="js-main-slider">
-                    <div class="pogoSlider-slide" style="background-image:url(/intro/images/slider-01.jpg);">
+                    <div class="pogoSlider-slide" style="background-image:url(/img/cliente2.jpg);">
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="slide_text">
-                                        <h3><span class="theme_color">EASILY</span> CREATE ONLINE</h3>
+                                        <h3><span class="theme_color">LindaSonrisa</span></h3>
                                         <br>
-                                        <h4>CV AND PROFESSIONAL<br>RESUME IN MINUTES</h4>
+                                        <h4>Te Damos una <strong>LindaSonrisa</strong></h4>
                                         <br>
-                                        <p>Showcase your Profile to the world
-                                            <br>using online CV builder and Get Hired Faster</p>
-                                        <a class="contact_bt" href="#">Contact us</a>
+                                        <p>Agenda tu hora de manera rápida y segura</p>
+                                        <a class="btn-success btn" href="#">Ver disponibilidad</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="pogoSlider-slide" style="background-image:url(/intro/images/slider-01.jpg);">
+                    <div class="pogoSlider-slide" style="background-image:url(/img/odontologo.jpg);">
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="slide_text">
-                                        <h3><span class="theme_color">EASILY</span> CREATE ONLINE</h3>
+                                        <h3><span class="theme_color">LindaSonrisa</span></h3>
                                         <br>
-                                        <h4>CV AND PROFESSIONAL<br>RESUME IN MINUTES</h4>
+                                        <h4>TU SONRISA<br>EN NUESTRAS MANOS</h4>
                                         <br>
-                                        <p>Showcase your Profile to the world
-                                            <br>using online CV builder and Get Hired Faster</p>
-                                        <a class="contact_bt" href="#">Contact us</a>
+                                        {{-- <p>Showcase your Profile to the world
+                                            <br>using online CV builder and Get Hired Faster</p> --}}
+                                        {{-- <a class="contact_bt" href="#">Contact us</a> --}}
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- .pogoSlider -->
             </div>
         </div>
     </div>
-    <!-- End Banner -->
-
     <div class="section layout_padding">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="full center">
                         <div class="heading_main text_align_center">
-                            <h2><span class="theme_color">WE CAN</span> HELP YOUR CAREER GROW</h2>
-                            <p class="large">Get your CV Resume in 4 easy steps</p>
+                            <h2>AGENDA TU CONSULTA <span class="theme_color">ONLINE</span></h2>
+                            <p class="large">Beneficio para todas las personas inscritas</p>
                         </div>
                     </div>
                 </div>
