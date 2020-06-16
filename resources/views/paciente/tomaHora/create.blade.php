@@ -62,6 +62,7 @@
 @stop
 
 @section('scripts')
+
     <script>
       function validarRut(string) {//solo letras y numeros
             var out = '';
@@ -82,6 +83,9 @@
 
         var date = "{{ date('Y-m-d') }}";
         url = '/api/horadisponible/' + fecha;
+        var hora = "{{ date('H:i A') }}";
+        // var hora = "15:30";
+        // console.log(hora);
         fetch(url)
             .then(resp=>{
                 return resp.json();
@@ -91,8 +95,11 @@
                 // alert(options);
                 $.each(result, function(key,value) {
                     if(value.activo==1){
-                        if(date == fecha ){
-                            $select.append('<option disabled="disabled" value=' + value.id_horario + '>' + value.horario + ' (No disponible) </option>');
+                        if(date == fecha && value.horario<hora){
+                            // if(value.horario<hora){
+                                $select.append('<option disabled="disabled" value=' + value.id_horario + '>' + value.horario + ' (No disponible) </option>');
+                            // }
+                            // console.log("hora1 : " + value.horario + " hora2: " + hora + " son bajo " + (value.horario<=hora));
                         }else{
                             $select.append('<option value=' + value.id_horario + '>' + value.horario + '</option>');
                         }
