@@ -35,13 +35,14 @@
 <body id="home" data-spy="scroll" data-target="#navbar-wd" data-offset="98">
     <div id="preloader">
         <div class="loader">
-            <img src="/intro/images/loader.gif" alt="#" />
+            <img src="/img/icon.png" alt="#" />
+            <p class="text-center">LindaSonrisa</p>
         </div>
     </div>
     <header class="top-header">
         <nav class="navbar header-nav navbar-expand-lg">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/intro/index.html"><img src="/intro/images/logo.png" alt="image"></a>
+                <a class="navbar-brand" href="/"><img src="/intro/images/logo2.png" alt="image"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-wd" aria-controls="navbar-wd" aria-expanded="false" aria-label="Toggle navigation">
                     <span></span>
                     <span></span>
@@ -129,10 +130,10 @@
                 </div>
 
                 <div class="col-lg-6 col-md-6 col-sm-12 white_fonts">
-                    <h3 class="small_heading">EVERYTHING YOU NEED IN ONE SOLUTION</h3>
-                    <p>HELP YOUR NEXT CAREER MOVE MORE SMOOTHER AND MORE EFFICIENT</p>
+                    <h3 class="small_heading">¿QUÉ ES LINDASONRISA?</h3>
+                    {{-- <p>CARNET DE IDENTIDAD</p> --}}
                     <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text</p>
-                    <a href="#" class="hvr-radial-out button-theme">Get Started ></a>
+                    {{-- <a href="#" class="hvr-radial-out button-theme">Get Started ></a> --}}
                 </div>
             </div>
         </div>
@@ -219,31 +220,7 @@
 
         </div>
     </div>
-    <!-- end section -->
-
-    <!-- section -->
-    <div class="section layout_padding theme_bg">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-lg-6 col-md-6 col-sm-12 white_fonts">
-                    <h3 class="small_heading">CREATE PERSONALISED CV </h3>
-                    <p>HELP YOUR NEXT CAREER MOVE MORE SMOOTHER AND MORE EFFICIENT</p>
-                    <p>ss normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in theirss normal distribution of letters, as opposed to using 'Content here, content here', making it look like../p>
-                        <p><a href="about.html" class="hvr-radial-out button-theme">Read more ></a></p>
-                </div>
-
-                <div class="col-lg-6 col-md-6 col-sm-12 text_align_center">
-                    <div class="full">
-                        <img class="img-responsive" src="/intro/images/resume_img2.png" alt="#" />
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- end section -->
-
-    <!-- section -->
+   
     <div class="section layout_padding">
         <div class="container">
             <div class="row">
@@ -298,11 +275,11 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="logo">
-                        <a href="index.html"><img src="/intro/images/footer_logo.png" alt="#" /></a>
+                        <a href="index.html"><img src="/intro/images/logo2.png" alt="/" /></a>
                     </div>
                 </div>
                 <div class="col-lg-12 white_fonts">
-                    <h4 class="text-align">Contact Us</h4>
+                    <h4 class="text-align">Contacto</h4>
                 </div>
                 <div class="margin-top_30 col-md-8 offset-md-2 white_fonts">
                     <div class="row">
@@ -311,8 +288,8 @@
                                 <img src="/intro/images/social1.png">
                             </div>
                             <div class="full white_fonts text_align_center">
-                                <p>London 145
-                                    <br>United Kingdom</p>
+                                <p>Calle Freire 58
+                                    <br>San Bernardo, Santiago, Chile.</p>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -320,8 +297,7 @@
                                 <img src="/intro/images/social2.png">
                             </div>
                             <div class="full white_fonts text_align_center">
-                                <p>consultation@gmail.com
-                                    <br>consultation@gmail.com</p>
+                                <p>marco@lindasonrisa.com</p>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -329,15 +305,14 @@
                                 <img src="/intro/images/social3.png">
                             </div>
                             <div class="full white_fonts text_align_center">
-                                <p>+7586656566
-                                    <br>+7586656566</p>
+                                <p>+56911111111</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
             </div>
-            <div class="row white_fonts margin-top_30">
+            {{-- <div class="row white_fonts margin-top_30">
                 <div class="col-lg-12">
                     <div class="full">
                         <div class="center">
@@ -350,7 +325,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </footer>
     <!-- End Footer -->
@@ -359,14 +334,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <p class="crp">© 2019 RD resume . All Rights Reserved.</p>
-                    <ul class="bottom_menu">
+                    <p class="crp">© {{ date('Y') }}. All Rights Reserved.</p>
+                    {{-- <ul class="bottom_menu">
                         <li><a href="#">About Us</a></li>
                         <li><a href="#">Find jobs</a></li>
                         <li><a href="contact.html">Contact us</a></li>
                         <li><a href="#">Terms of Service</a></li>
                         <li><a href="#">Privacy</a></li>
-                    </ul>
+                    </ul> --}}
                 </div>
             </div>
         </div>
