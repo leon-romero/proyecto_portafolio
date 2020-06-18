@@ -17,15 +17,7 @@ Route::post('loginOdontologo', 'Authlogin\AuthLogin@loginOdontologo')->name('log
 Route::get('salir', 'Authlogin\AuthLogin@logout')->name('login.salir');
 
 
-
-// Route::get('paciente','FichaClienteController@index')->name('paciente.index');
-// Route::get('paciente/create','FichaClienteController@create')->name('paciente.create');
-// Route::post('paciente','FichaClienteController@store')->name('paciente.store');
-// // Route::get('paciente/{rut}','FichaClienteController@show')->name('paciente.show');
-// Route::get('paciente/{rut}/edit','FichaClienteController@edit')->name('paciente.edit');
-// Route::put('paciente/{rut}/edit','FichaClienteController@update')->name('paciente.update');
-
-Route::get('home', function () { return view('home'); })->name('home');
+Route::get('home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'acceso.empleado'], function() {   
     Route::resource('paciente','FichaClienteController');
@@ -66,6 +58,14 @@ Route::group(['middleware' => 'acceso.odontologo'], function() {
     Route::get('consulta/historial','AtencionPacienteController@historial')->name('atencion.historial');
     Route::post('consulta/historial','AtencionPacienteController@historialBuscar')->name('atencion.historial.buscar');
     Route::get('consulta/historial/{rut}','AtencionPacienteController@historialRut')->name('atencion.historial.rut');    
+});
+
+
+
+
+Route::group(['middleware' => 'acceso.proveedor'], function() {   
+    Route::get('proveedor/solicitudes','ProveedorSolicitudController@index')->name('proveedor.solicitudes');
+
 });
 
 
