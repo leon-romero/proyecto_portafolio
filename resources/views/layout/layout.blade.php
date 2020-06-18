@@ -1,13 +1,3 @@
-@php
-    // $nombreUsuario = "";
-    // if (auth('administrador')->check()){
-    //   $nombreUsuario =  auth('administrador')->user()->nombres;
-    // }else{
-    //   header("Location: / ");
-    //   // header('Location: 404 ', true, 404);
-
-    // }
-@endphp
 <!DOCTYPE html>
 <html>
 <head>

@@ -9,30 +9,35 @@
 
     $tipo_usuario = "";
     $nombre = "";
+    $img = "";
 
     if(auth('empleado')->check()){
       $tipo_usuario  = "Empleado";
       $nombre = auth('empleado')->user()->nombre_completo();
+      $img = "/img/admin.png";
     }else if(auth('cliente')->check()){
       $tipo_usuario  = "Cliente";
       $nombre = auth('cliente')->user()->nombre_completo;
+      $img = "/img/paciente.png";
     }else if(auth('odontologo')->check()){
       $tipo_usuario  = "Odontologo";
       $nombre = auth('odontologo')->user()->nombre_completo;
+      $img = "/img/dentista.png";
     }else if(auth('proveedor')->check()){
       $tipo_usuario  = "Proveedor";
       $nombre = auth('proveedor')->user()->nombre_empresa;
+      $img = "/img/proveedor.png";
     }
 @endphp
 <aside class="main-sidebar">
   <section class="sidebar">
     <div class="user-panel">
       <div class="pull-left image">
-        <img src="/img/admin.png" class="img-circle" alt="User Image">
+        <img src="{{ $img ?? '' }}" class="img-circle" alt="User Image">
       </div>
       <div class="pull-left info">
         <p>{{ $nombre ?? '' }}</p>
-        <a href="/"><i class="fa fa-circle text-success"></i> {{ $tipo_usuario }}</a>
+        <a href="/home"><i class="fa fa-circle text-success"></i> {{ $tipo_usuario }}</a>
       </div>
     </div>
     <ul class="sidebar-menu" data-widget="tree">

@@ -64,7 +64,7 @@
                                         <h4>Te Damos una <strong>LindaSonrisa</strong></h4>
                                         <br>
                                         <p>Agenda tu hora de manera rápida y segura</p>
-                                        <a class="btn-success btn" href="#">Ver disponibilidad</a>
+                                        <a class="btn-success btn" href="https://app.lindasonrisa.edugestion.cl/">Ver disponibilidad</a>
                                     </div>
                                 </div>
                             </div>
