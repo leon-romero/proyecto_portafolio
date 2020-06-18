@@ -8,17 +8,20 @@
     $contador_pendientes = 0;
 
     $tipo_usuario = "";
+    $nombre = "";
 
     if(auth('empleado')->check()){
       $tipo_usuario  = "Empleado";
+      $nombre = auth('empleado')->user()->nombre_completo();
     }else if(auth('cliente')->check()){
       $tipo_usuario  = "Cliente";
-
+      $nombre = auth('cliente')->user()->nombre_completo;
     }else if(auth('odontologo')->check()){
       $tipo_usuario  = "Odontologo";
-
+      $nombre = auth('odontologo')->user()->nombre_completo;
     }else if(auth('proveedor')->check()){
       $tipo_usuario  = "Proveedor";
+      $nombre = auth('proveedor')->user()->nombre_empresa;
     }
 @endphp
 <aside class="main-sidebar">
@@ -28,7 +31,7 @@
         <img src="/img/admin.png" class="img-circle" alt="User Image">
       </div>
       <div class="pull-left info">
-        <p>Leonardo</p>
+        <p>{{ $nombre ?? '' }}</p>
         <a href="/"><i class="fa fa-circle text-success"></i> {{ $tipo_usuario }}</a>
       </div>
     </div>

@@ -14,31 +14,22 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Linda Sonrisa</title>
-  <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <link rel="icon" type="image/ico" href="/favicon.ico">
+  <link rel="shortcut icon" href="/img/icon.png" type="image/x-icon" />
   <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/aef2b90f5f.js" crossorigin="anonymous"></script>
-  {{-- <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css"> --}}
-  <!-- Theme style -->
   <link rel="stylesheet" href="/dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="/dist/css/skins/_all-skins.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-  <!-- Datatables -->
   <link href="/bower_components/dataTables/css/jquery.dataTables.min.css" rel="stylesheet">
-  {{-- Select2 --}}
   <link href="/bower_components/select2/css/select2.min.css" rel="stylesheet">
-  {{-- RinconOrganico --}}
   <link href="/dist/css/style.css" rel="stylesheet">
-  {{-- snackbar --}}
   <link href="/assets_shop/css/snackbar.css" rel="stylesheet">
   <style>
     .label {
       margin-right: 1px;
     }
   </style>
-  {{-- insertar codigo style --}}
   @yield('style')	
 </head>
 @php

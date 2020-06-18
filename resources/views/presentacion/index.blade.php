@@ -262,7 +262,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="logo">
-                        <a href="index.html"><img src="/intro/images/logo2.png" alt="/" /></a>
+                        <a href="/"><img src="/intro/images/logo2-footer.png" alt="/" /></a>
                     </div>
                 </div>
                 <div class="col-lg-12 white_fonts">
