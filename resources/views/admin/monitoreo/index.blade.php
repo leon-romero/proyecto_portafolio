@@ -20,9 +20,6 @@
         <div class="box-header">
           <h3 class="box-title">Todos los productos</h3>
         </div>
-        <div class="col-md-12 text-center">
-          <a href="{{ route('producto.create')}}" class="btn btn-success btn-sm"><i class="fa fa-user-plus"></i> Nuevo producto</a>
-        </div>
         <br>
         <br>
         <!-- /.box-header -->
@@ -34,10 +31,9 @@
                 <th>Nombre producto</th>
                 <th>Stock</th>
                 <th>Stock Critico</th>
-                <th></th>
-                {{-- <th></th> --}}
               </tr>
             </thead>
+
             <tbody>
               @if (count($productos)>0 )
               @php
@@ -47,17 +43,28 @@
                 <tr>
                   <td>{{ $i++ }}</td>
                   <td>{{ $p->nombre_producto }}</td>
-                  <td>{{ $p->stock }}</td>
+                  
+                 @php
+                    $color;
+                    if ($p->stock == $p->stock_critico) {
+                       $color = "bg-warning";
+                    }
+                    if ($p->stock < $p->stock_critico) {
+                      $color = "bg-danger";
+                    }
+                    if ($p->stock > $p->stock_critico){
+                      $color = "bg-success";
+                    }
+                 @endphp 
+                  
+                  <td class="{{$color}}">{{$p->stock}}</td> 
+                  
                   <td>{{ $p->stock_critico }}</td>
-                  {{-- <td>{{ $pro->correo }}</td> --}}
-                  <td>
-                    {{-- <a href="" class="btn btn-primary btn-sm">Direcciones <i class="fa fa-home"></i></a> --}}
-                    <a href="{{ route('producto.edit',$p->id_producto) }}" class="btn btn-info btn-sm">Editar <i class="fa fa-edit"></i></a>
-                  </td>
                 </tr>
                 @endforeach
               @endif
             </tbody>
+
           </table>
         </div>
       </div>

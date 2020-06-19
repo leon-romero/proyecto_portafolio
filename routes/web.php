@@ -31,7 +31,7 @@ Route::group(['middleware' => 'acceso.empleado'], function() {
     Route::resource('odontologo','OdontologoController');
     Route::resource('servicio','ServicioController');
     Route::resource('producto','ProductoController');
-    Route::resource('solicitud','SolicitudController');
+    Route::resource('monitoreo','MonitoreoController');
 });
 
 

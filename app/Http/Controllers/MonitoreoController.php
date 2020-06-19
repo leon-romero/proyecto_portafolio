@@ -9,11 +9,11 @@ use App\Modelo\OrdenEmpleado;
 
 use Illuminate\Http\Request;
 
-class SolicitudController extends Controller
+class MonitoreoController extends Controller
 {
     public function index()
     {
-        $solicitud = Producto::get();
-        return view('admin.solicitud.index',compact('solicitud'));
+        $productos = Producto::get();
+        return view('admin.monitoreo.index',compact('productos'));
     }
 }
