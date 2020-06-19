@@ -8,6 +8,8 @@ use App\Modelo\Horario;
 use App\Modelo\Servicio;
 use App\Modelo\ReservarHora;
 
+use App\Http\Requests\TomaHoraCreateRequest;
+use App\Http\Requests\TomaHoraUpdateRequest;
 
 class ReservarHoraController extends Controller
 {
@@ -38,13 +40,14 @@ class ReservarHoraController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TomaHoraRequest $request)
     {
         try {
             $fecha = date_format(date_create($request->input('fecha_reserva')),'Y-m-d');
             $horario = $request->input('id_horario');
             if ($this->isDisponible($fecha,$horario)) {
                 $rh = new ReservarHora();
+                $rh->id_servicio = $request->input('id_servicio'); 
                 $rh->id_centro = 1;
                 $rh->fecha_reserva = $fecha;
                 $rh->id_horario = $horario;
@@ -53,7 +56,6 @@ class ReservarHoraController extends Controller
                 $rh->activo = 1;
                 $rh->id_ficha_cliente = auth('cliente')->user()->id_ficha_cliente;
                 $rh->id_estado_reserva = 1;
-                $rh->id_servicio = $request->input('id_servicio');  
                 $rh->save();
                 return back()->with('success','Se ha creado correctamente.');
             } else {
@@ -110,7 +112,7 @@ class ReservarHoraController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TomaHoraUpdateRequest $request, $id)
     {
         try {
             $rh = ReservarHora::where('id_reservar_hora',$id)->firstOrFail();
@@ -120,12 +122,14 @@ class ReservarHoraController extends Controller
             $rh->update();
 
             //Se genera la consulta
-            // Iteracion actualizar boleta de servicio
+            //Iteracion actualizar boleta de servicio
+            if($rg->id_estado_reserva==2){
+                // Aca genera un boleta de servicio  
+            }
 
             return back()->with('success','Se ha actualizado correctamente.');
         } catch (\Throwable $th) {
-            // return back()->with('info','Error Intente nuevamente.');
-            return $th;
+            return back()->with('info','Error Intente nuevamente.');
         }
     }
 
