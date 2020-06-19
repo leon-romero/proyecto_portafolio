@@ -17,7 +17,6 @@ class ProveedorSolicitudController extends Controller
         return view('proveedor.index',compact('ordenes'));
     }
 
-
     public function show($id){
         try {
             $orden = OrdenEmpleado::where('id_ficha_proveedor', auth('proveedor')->user()->id_ficha_proveedor )
