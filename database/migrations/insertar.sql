@@ -2,25 +2,25 @@
 
 INSERT INTO servicio (id_servicio,nombre_servicio,mostrar,created_at,updated_at) VALUES (1,'ORTODONCIA',1,'2019-11-10','2019-11-10');
 INSERT INTO servicio (id_servicio,nombre_servicio,mostrar,created_at,updated_at) VALUES (2,'ODONTOLOGÍA GENERAL',1,'2019-11-10','2019-11-10');
-INSERT INTO servicio (id_servicio,nombre_servicio,mostrar,created_at,updated_at) VALUES (3,'ODONTOPEDIATRÍA',1,'2019-11-10','2019-11-10');
-INSERT INTO servicio (id_servicio,nombre_servicio,mostrar,created_at,updated_at) VALUES (4,'IMPLANTOLOGÍA',1,'2019-11-10','2019-11-10');
-INSERT INTO servicio (id_servicio,nombre_servicio,mostrar,created_at,updated_at) VALUES (5,'PERIODONCIA',1,'2019-11-10','2019-11-10');
-INSERT INTO servicio (id_servicio,nombre_servicio,mostrar,created_at,updated_at) VALUES (6,'DISFUNCIÓN',1,'2019-11-10','2019-11-10');
+-- INSERT INTO servicio (id_servicio,nombre_servicio,mostrar,created_at,updated_at) VALUES (3,'ODONTOPEDIATRÍA',1,'2019-11-10','2019-11-10');
+-- INSERT INTO servicio (id_servicio,nombre_servicio,mostrar,created_at,updated_at) VALUES (4,'IMPLANTOLOGÍA',1,'2019-11-10','2019-11-10');
+-- INSERT INTO servicio (id_servicio,nombre_servicio,mostrar,created_at,updated_at) VALUES (5,'PERIODONCIA',1,'2019-11-10','2019-11-10');
+-- INSERT INTO servicio (id_servicio,nombre_servicio,mostrar,created_at,updated_at) VALUES (6,'DISFUNCIÓN',1,'2019-11-10','2019-11-10');
 
 
-INSERT INTO documento VALUES(1,'Fotocopia Carnet (Ambas parte)',1,'2019-10-12','2019-10-12');
-INSERT INTO documento VALUES(2,'Ficha de Protección Social',1,'2019-10-12','2019-10-12');
-INSERT INTO documento VALUES(3,'Certificado de AFP',1,'2019-10-12','2019-10-12');
-INSERT INTO documento VALUES(4,'Liquidación de sueldo de los últimos 4 meses',1,'2019-10-12','2019-10-12');
+INSERT INTO documento VALUES(1,'Fotocopia Carnet (Ambas parte)',1,'2020-10-12','2020-10-12');
+INSERT INTO documento VALUES(2,'Ficha de Protección Social',1,'2020-10-12','2020-10-12');
+-- INSERT INTO documento VALUES(3,'Certificado de AFP',1,'2019-10-12','2019-10-12');
+INSERT INTO documento VALUES(3,'Liquidación de sueldo de los últimos 4 meses',1,'2020-10-12','2020-10-12');
 
-INSERT INTO tipo_empleado VALUES(1,'Administrador','2019-10-12','2019-10-12');
-INSERT INTO tipo_empleado VALUES(2,'Empleado','2019-10-12','2019-10-12');
+INSERT INTO tipo_empleado VALUES(1,'Administrador','2020-10-12','2020-10-12');
+INSERT INTO tipo_empleado VALUES(2,'Empleado','2020-10-12','2020-10-12');
 
-INSERT INTO centro VALUES(1,'LindaSonrisa Central','Av 1234',1039,'2019-10-12','2019-10-12');
+INSERT INTO centro VALUES(1,'LindaSonrisa','av freire',1039,'2020-10-12','2020-10-12');
 
 
--- INSERT INTO familia (id_familia,nombre_familia,created_at,updated_at) VALUES (1,'Simple','2019-11-10','2019-11-10');
--- INSERT INTO tipo_producto (id_tipo_producto,nombre_tipo_producto,created_at,updated_at) VALUES (1,'simple','2019-11-10','2019-11-10');
+INSERT INTO familia (id_familia,nombre_familia,created_at,updated_at) VALUES (1,'Simple','2020-11-10','2020-11-10');
+INSERT INTO tipo_producto (id_tipo_producto,nombre_tipo_producto,created_at,updated_at) VALUES (1,'simple','2020-11-10','2020-11-10');
 
 -- INSERT INTO producto (id_producto,nombre_producto,descripcion,id_familia,id_tipo_producto,stock,stock_critico,created_at,updated_at,bloqueo,activo) VALUES (12,'Anestecia','',1,1,100,50,'2019-11-10','2019-11-10',0,1);
 -- INSERT INTO producto (id_producto,nombre_producto,descripcion,id_familia,id_tipo_producto,stock,stock_critico,created_at,updated_at,bloqueo,activo) VALUES (13,'Pack Quirujico','',1,1,200,50,'2019-11-10','2019-11-10',0,1);
@@ -89,14 +89,6 @@ INSERT INTO centro VALUES(1,'LindaSonrisa Central','Av 1234',1039,'2019-10-12','
 -- INSERT INTO detalle_servicio (id_detalle_servicio,id_producto,id_servicio,cantidad,created_at,updated_at) VALUES (51,20,6,10,'2019-11-10','2019-11-10');
 -- INSERT INTO detalle_servicio (id_detalle_servicio,id_producto,id_servicio,cantidad,created_at,updated_at) VALUES (52,24,6,1,'2019-11-10','2019-11-10');
 -- INSERT INTO detalle_servicio (id_detalle_servicio,id_producto,id_servicio,cantidad,created_at,updated_at) VALUES (53,27,6,1,'2019-11-10','2019-11-10');
-
-
-
-
--- insert into table_name
--- (date_field)
--- values
--- (TO_DATE('2003/05/03 21:02:44', 'yyyy/mm/dd hh24:mi:ss'));
 
 INSERT INTO empleado VALUES(2,'admin1','12345','187500303','Leonardo Antonio','Romero Aguilera','98887678','leon.romero@example.com',1,0,1,'2019-11-10','2019-11-10');
 

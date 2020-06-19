@@ -14,7 +14,6 @@
   <link href="/bower_components/dataTables/css/jquery.dataTables.min.css" rel="stylesheet">
   <link href="/bower_components/select2/css/select2.min.css" rel="stylesheet">
   <link href="/dist/css/style.css" rel="stylesheet">
-  <link href="/assets_shop/css/snackbar.css" rel="stylesheet">
   <style>
     .label {
       margin-right: 1px;

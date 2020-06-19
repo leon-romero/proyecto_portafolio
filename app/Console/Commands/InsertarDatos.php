@@ -39,8 +39,9 @@ class InsertarDatos extends Command
     public function handle()
     {
         try {
-            // DB::unprepared(file_get_contents('database/migrations/insertarDatos.sql'));ç
-             DB::unprepared(file_get_contents('database/migrations/insertar.sql'));
+            // DB::unprepared(file_get_contents('database/migrations/insertarDatos.sql'));
+            // DB::unprepared(file_get_contents('database/migrations/insertar.sql'));
+            DB::unprepared(file_get_contents('database/migrations/procedure.sql'));
 
             $this->info("Import completed!");
         } catch (\Throwable $th) {
