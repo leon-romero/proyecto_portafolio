@@ -64,8 +64,8 @@ Route::group(['middleware' => 'acceso.odontologo'], function() {
 
 
 Route::group(['middleware' => 'acceso.proveedor'], function() {   
-    Route::get('proveedor/solicitudes','ProveedorSolicitudController@index')->name('proveedor.solicitudes');
-
+    Route::get('pro/solicitudes','ProveedorSolicitudController@index')->name('proveedor.solicitudes');
+    Route::get('pro/solicitudes/{id}','ProveedorSolicitudController@show')->name('proveedor.solicitudes.show');
 });
 
 

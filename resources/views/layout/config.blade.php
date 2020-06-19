@@ -120,8 +120,11 @@
       @if (auth('proveedor')->check())
       
       <li class="header">Vista Proveedor</li>
-      <li><a href="/home"><i class="fa fa-clock text-white"></i> <span>Solicitudes</span></a></li>   
+      <li><a href="{{ route('proveedor.solicitudes') }}"><i class="fa fa-clock text-white"></i> <span>Solicitudes</span></a></li>   
       <li><a href="/home"><i class="fa fa-home text-white"></i> <span>Historial de solicitudes</span></a></li> 
+      
+
+      
       @endif
 
       <li><a href="{{ route('login.salir') }}"><i class="fa fa-sign-out"></i> <span>Salir</span></a></li>    
