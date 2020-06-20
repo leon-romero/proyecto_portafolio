@@ -68,9 +68,9 @@ delimiter ;
 
 
 
-DROP PROCEDURE IF EXISTS `function_horario_tomadas`;
+DROP PROCEDURE IF EXISTS `procedure_horario_tomadas`;
 delimiter ;;
-CREATE PROCEDURE `function_horario_tomadas` (IN fechav date)
+CREATE PROCEDURE `procedure_horario_tomadas` (IN fechav date)
 BEGIN
 	SELECT * FROM horario hor JOIN reservar_hora reserhora USING(id_horario) WHERE reserhora.fecha_reserva = fechav;
 END
