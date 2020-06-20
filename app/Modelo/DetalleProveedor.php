@@ -14,6 +14,6 @@ class DetalleProveedor extends Model
     }
 
     public function proveedor(){
-        return $this->belongsTo(Ficha_proveedor::class,'id_ficha_proveedor');
+        return $this->belongsTo(FichaProveedor::class,'id_ficha_proveedor');
     }
 }

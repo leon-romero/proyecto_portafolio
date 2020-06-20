@@ -113,7 +113,7 @@
       @if (auth('empleado')->check())
       <li class="header">Vista Empleado</li>
       <li><a href="{{route('monitoreo.index')}}"><i class="fa fa-clock text-white"></i> <span>Monitoreo de Productos</span></a></li>   
-      <li><a href="/home"><i class="fa fa-home text-white"></i> <span>Historial de solicitud</span></a></li> 
+      <li><a href="{{route('monitoreo.solicitudes')}}"><i class="fa fa-home text-white"></i> <span>Solicitud de Productos</span></a></li> 
       @endif
       
 

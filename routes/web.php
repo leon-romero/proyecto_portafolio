@@ -31,7 +31,17 @@ Route::group(['middleware' => 'acceso.empleado'], function() {
     Route::resource('odontologo','OdontologoController');
     Route::resource('servicio','ServicioController');
     Route::resource('producto','ProductoController');
-    Route::resource('monitoreo','MonitoreoController');
+
+    Route::get('monitoreo','MonitoreoController@index')->name('monitoreo.index');
+    Route::get('monitoreo/solicitud','MonitoreoController@solicitudes')->name('monitoreo.solicitudes');
+    Route::get('monitoreo/provedores','MonitoreoController@proveedores')->name('monitoreo.proveedores');
+    Route::get('monitoreo/provedores/{id}/create','MonitoreoController@create')->name('monitoreo.create');
+    Route::post('monitoreo/provedores/{id}/create','MonitoreoController@store')->name('monitoreo.store');
+   
+    Route::get('monitoreo/{codigo}','MonitoreoController@show')->name('monitoreo.show');
+    Route::put('monitoreo/{codigo}','MonitoreoController@update')->name('monitoreo.update');
+    Route::get('monitoreo/recepcion/{codigo}','MonitoreoController@recepcion')->name('monitoreo.recepcion');
+
 });
 
 
