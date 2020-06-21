@@ -17,11 +17,11 @@
       $img = "/img/admin.png";
     }else if(auth('cliente')->check()){
       $tipo_usuario  = "Cliente";
-      $nombre = auth('cliente')->user()->nombre_completo;
+      $nombre = auth('cliente')->user()->nombre_completo();
       $img = "/img/paciente.png";
     }else if(auth('odontologo')->check()){
       $tipo_usuario  = "Odontologo";
-      $nombre = auth('odontologo')->user()->nombre_completo;
+      $nombre = auth('odontologo')->user()->nombre_completo();
       $img = "/img/dentista.png";
     }else if(auth('proveedor')->check()){
       $tipo_usuario  = "Proveedor";
@@ -113,7 +113,8 @@
       @if (auth('empleado')->check())
       <li class="header">Vista Empleado</li>
       <li><a href="{{route('monitoreo.index')}}"><i class="fa fa-clock text-white"></i> <span>Monitoreo de Productos</span></a></li>   
-      <li><a href="{{route('monitoreo.solicitudes')}}"><i class="fa fa-home text-white"></i> <span>Solicitud de Productos</span></a></li> 
+      <li><a href="{{route('monitoreo.solicitudes')}}"><i class="fa fa-home text-white"></i> <span>Solicitud de Productos</span></a></li>
+      <li><a href=""><i class="fa fa-home text-white"></i> <span>Boleta de Servicios</span></a></li> 
       @endif
       
 

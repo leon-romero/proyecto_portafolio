@@ -21,7 +21,6 @@
           <h3 class="box-title">Todas las Solicitudes</h3>
           <a href="{{ route('monitoreo.proveedores') }}" class="btn btn-primary pull-rigth">Crear Solicitud</a>
         </div>
-       
         <br>
         <br>
         <!-- /.box-header -->
@@ -30,7 +29,7 @@
             <thead>
               <tr>
                 <th>#</th>
-                {{-- <th>Fecha Creación</th> --}}
+                <th>Fecha Creación</th>
                 <th>Empleado</th>
                 <th>Proveedor</th>
                 <th>Estado</th>
@@ -55,16 +54,27 @@
                 @endphp
                 <tr>
                   <td>{{ $s->codigo }}</td>
+                  <td>{{ $s->fecha_texto() }}</td>
                   <td>{{ $s->empleado->nombre_completo()}}</td>
                   <td>{{ $s->proveedor->nombre_empresa}}</td>
                   <td class="{{ $color }}">{{ $estado }}</td>  
-                  <td>  </td>
+                  @php
+                    $estado = "";
+                    $color = "";
+                    if($s->enviado == 1){
+                      $estado = "Recibir";
+                      $color = "btn-success";
+                    }else{
+                      $estado = "Ver";
+                      $color = "btn-info";
+                    }
+                  @endphp
+                  <td> <a href="{{ route('monitoreo.show',$s->codigo)}}" class="btn {{ $color }}">{{ $estado }}</a> </td>
                 </tr>
 
                 @endforeach
               @endif
             </tbody>
-
           </table>
         </div>
       </div>

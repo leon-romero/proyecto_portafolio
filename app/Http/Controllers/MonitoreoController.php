@@ -46,51 +46,84 @@ class MonitoreoController extends Controller
     }
 
     // recepcion del producto 
-    public function recepcion($codigo){
-        try{
-            $orden = OrdenEmpleado::where('codigo',$codigo)->firstOrFail();
-            return view('',compact('orden'));
-        } catch (\Throwable $th) {
-            return $th;
-        }
-    }
-
-    // ver resultado
     public function show($codigo){
         try{
             $orden = OrdenEmpleado::where('codigo',$codigo)->firstOrFail();
-            return view('',compact('orden'));
+            $detalles = DetalleOrden::where('id_orden_empleado',$orden->id_orden_empleado)->get();
+
+            // return $detalles;
+            if($orden->enviado == 1){
+                return view('admin.solicitud.recibir.index',compact('orden','detalles'));
+            }else{
+                return view('admin.solicitud.recibir.show',compact('orden','detalles'));
+            }
         } catch (\Throwable $th) {
             return $th;
         }
     }
 
-  
+
+    public function update($codigo, Request $request){
+        // return $request;
+        try {
+            $orden = OrdenEmpleado::where('codigo',$codigo)->first();
+            $listado = $request->input('id_producto');
+
+            foreach ($listado as $l) {
+                $n = "cantidad" . $l;
+                $cantidad = $request->input($n);
+
+                $detalle = DetalleOrden::where('id_orden_empleado',$orden->id_orden_empleado)->where('id_detalle_orden',$l)->first();
+                // $detalle->id_orden_empleado = $orden->id_orden_empleado;
+                // $detalle->id_producto = (int)$l;
+                // $detalle->cantidad = (int)$cantidad;
+                $orden->id_empleado_r = auth('empleado')->user()->id_empleado;
+                $orden->enviado = 2;
+                $orden->update();
+                if($cantidad>0){
+                    $detalle->cantidad_recibida = $cantidad;
+                    $detalle->entregado = 1;
+                    $detalle->producto->stock += $cantidad;
+                    $detalle->producto->update(); 
+                }else{
+                    $detalle->entregado = 0;
+                }
+                $detalle->update();            
+        
+        
+            }
+            return "genial";
+        } catch (\Throwable $th) {
+            return $th;
+        }
+    }
 
     public function store($id_proveedor, Request $request){
         try {
-            if(strlen($request->input('listado')>0)){
-                // $orden = new OrdenEmpleado();
-                // $orden->id_empleado = auth('empleado')->user()->id_empleado;
-                // $orden->codigo = $this->code();
+            // return $request;
+            if(strlen($request->input('id_producto')>0)){
+                $orden = new OrdenEmpleado();
+                $orden->id_empleado = auth('empleado')->user()->id_empleado;
+                $orden->codigo = $this->code();
 
-                // $orden->id_ficha_proveedor = $id_proveedor;
-                // $orden->enviado = 1;
-                // $orden->save();
+                $orden->id_ficha_proveedor = $id_proveedor;
+                $orden->enviado = 1;
+                $orden->save();
     
-                $listado = $request->input('listado');
-                return $listado;
+                $listado = $request->input('id_producto');
+                
 
                 foreach ($listado as $l) {
                     $n = "cantidad" . $l;
                     $cantidad = $request->input($n);
+
                     $detalle = new DetalleOrden();
                     $detalle->id_orden_empleado = $orden->id_orden_empleado;
                     $detalle->id_producto = (int)$l;
                     $detalle->cantidad = (int)$cantidad;
                     $detalle->cantidad_recibida = 0;
                     $detalle->entregado = 0;
-                    // $detalle->save();            
+                    $detalle->save();            
                 }
     
                 return back()->with('success','Se ha generado la orden código ' . $orden->codigo . "."); 

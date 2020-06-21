@@ -20,4 +20,19 @@ class OrdenEmpleado extends Model
     public function proveedor(){
         return $this->belongsTo(FichaProveedor::class,'id_ficha_proveedor');
     }    
+
+    public function fecha_texto(){
+		$date = date_format(date_create($this->created_at), 'd-m-Y h:m');
+		
+		return $date;
+    }
+    
+    public function fecha_recepcion(){
+		$date = date_format(date_create($this->updated_at), 'd-m-Y h:m');
+		
+		return $date;
+    }
+
 }
+
+

@@ -32,7 +32,7 @@
               @foreach ($ordenes as $or)
                 <tr>
                   <td>{{ $or->codigo }}</td>
-                  <td>{{ $or->empleado->nombre_completo }}</td>
+                  <td>{{ $or->empleado->nombre_completo() }}</td>
                   <td>
                     <a href="{{ route('proveedor.solicitudes.show',$or->id_orden_empleado) }}" class="btn btn-info btn-sm"> Detalle</a>
                   </td>

@@ -38,7 +38,10 @@
                         <div class="row form-group">
                             <label class="col-sm-2 control-label">Fecha Agenda</label>
                             <div class="col-sm-6">
-                                <input type="date" id="fecha_reserva" name="fecha_reserva" onChange="CargarHorario()" value="{{date('Y-m-d')}}" required>   
+                                @php
+                                $hoy  = date('Y-m-d');
+                                @endphp
+                                <input type="date" min="{{ $hoy }}" id="fecha_reserva" name="fecha_reserva" onChange="CargarHorario()" value="{{date('Y-m-d')}}" required>   
                             </div>
                         </div>
                         <div class="row form-group">

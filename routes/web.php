@@ -40,7 +40,7 @@ Route::group(['middleware' => 'acceso.empleado'], function() {
    
     Route::get('monitoreo/{codigo}','MonitoreoController@show')->name('monitoreo.show');
     Route::put('monitoreo/{codigo}','MonitoreoController@update')->name('monitoreo.update');
-    Route::get('monitoreo/recepcion/{codigo}','MonitoreoController@recepcion')->name('monitoreo.recepcion');
+    //Route::boletas('boleta',BoletaServicio);
 
 });
 
@@ -60,7 +60,7 @@ Route::get('historiaCliente','ReservarHoraController@show')->name('tomadehora.sh
 
 
 Route::group(['middleware' => 'acceso.odontologo'], function() {   
-    Route::get('consultas','AtencionPacienteController@index')->name('atencion.index');
+    Route::get('consultas','AtencionPaciesnteController@index')->name('atencion.index');
     Route::get('consultas/{id}','AtencionPacienteController@show')->name('atencion.show');
     Route::put('consultas/{id}','ReservarHoraController@update')->name('atencion.update');
     
