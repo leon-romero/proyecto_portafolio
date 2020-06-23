@@ -19,6 +19,9 @@
       <div class="box">
         <div class="box-header">
           <h3 class="box-title">Todos los productos</h3>
+          <button type="button" class="btn btn-danger  float-right btn-sm" onclick="descargarPDF('tabla','Reporte')"> <i class="fa fa-file-pdf"></i> Descargar PDF </button>
+          <button type="button" class="btn btn-success float-right btn-sm mr-2" onclick="tableToExcel('tabla','ReporteExcel')"><i class="fa fa-file-excel"></i> Descargar Excel</button>      
+      
         </div>
         <br>
         <br>
@@ -28,41 +31,43 @@
             <thead>
               <tr>
                 <th>#</th>
-                <th>Nombre producto</th>
-                <th>Stock</th>
-                <th>Stock Critico</th>
+                <th>Fecha Realizado</th>
+                <th>Cliente</th>
+                <th>Odontologo</th>
+                <th>Servicio</th>
+                <th></th>
+                <th></th>
               </tr>
             </thead>
 
             <tbody>
-              @if (count($productos)>0 )
-              @php
-                  $i=1;
-              @endphp  
-              @foreach ($productos as $p)
-                <tr>
-                  <td>{{ $i++ }}</td>
-                  <td>{{ $p->nombre_producto }}</td>
+              
+                @php
+										$i=1;	
+									@endphp
+									@foreach ($boletas as $b)
+									@php
+										$text_color = "";
+										$bg_color = "";
                   
-                 @php
-                    $color;
-                    if ($p->stock == $p->stock_critico) {
-                       $color = "bg-warning";
-                    }
-                    if ($p->stock < $p->stock_critico) {
-                      $color = "bg-danger";
-                    }
-                    if ($p->stock > $p->stock_critico){
-                      $color = "bg-success";
-                    }
-                 @endphp 
-                  
-                  <td class="{{$color}}">{{$p->stock}}</td> 
-                  
-                  <td>{{ $p->stock_critico }}</td>
-                </tr>
-                @endforeach
-              @endif
+										$proxima_fecha = date_format(date_create($b->created_at), 'd-m-Y');
+
+									@endphp
+									<tr class="{{ $text_color }} {{ $bg_color }}">
+										<td class="">{{ $b->id_boleta_servicio }}</td>							
+										<td>{{ $proxima_fecha }}</td>						
+										<td>{{ $b->horario }}</td>
+								
+										<td>{{ $b->nombre_cliente }}</td>
+										<td>{{ $b->nombre_odontologo }}</td>
+										<td>{{ $b->nombre_servicio }}</td>
+							
+										<td>										
+											<a href="{{ route('boletas.show',$b->id_boleta_servicio) }}" class="btn btn-info"><i class="fas fa-eye"></i> Ver</a>										
+										</td>
+									</tr>
+									@endforeach
+
             </tbody>
 
           </table>
@@ -71,4 +76,19 @@
     </div>
   </div>
 </section>
+
+@stop
+
+@section('scripts')
+<script src="/bower_components/jspdf/js/jspdf.min.js"></script>
+<script src="/bower_components/jspdf/js/jspdf.plugin.autotable.js"></script>
+<script>
+  function descargarPDF(table,nombre) {           
+      var doc = new jsPDF();      
+      doc.autoTable({html: `#${table}`});    
+      doc.save( nombre+'.pdf');      
+  }
+</script>
+<script src="/dist/js/excel.js"></script>
+
 @stop

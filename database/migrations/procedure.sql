@@ -2,7 +2,7 @@ DROP PROCEDURE IF EXISTS `proce_buscar_cliente`;
 delimiter ;;
 CREATE PROCEDURE `proce_buscar_cliente` (IN idx int)
 BEGIN
-	SELECT * FROM ficha_cliente WHERE id_ficha_cliente = idx;
+	SELECT * FROM ficha_cliente WHERE id_ficha_cliente = idx LIMIT 1;
 END
  ;;
 delimiter ;

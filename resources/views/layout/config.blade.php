@@ -114,7 +114,7 @@
       <li class="header">Vista Empleado</li>
       <li><a href="{{route('monitoreo.index')}}"><i class="fa fa-clock text-white"></i> <span>Monitoreo de Productos</span></a></li>   
       <li><a href="{{route('monitoreo.solicitudes')}}"><i class="fa fa-home text-white"></i> <span>Solicitud de Productos</span></a></li>
-      <li><a href=""><i class="fa fa-home text-white"></i> <span>Boleta de Servicios</span></a></li> 
+      <li><a href="{{route('boleta.index')}}"><i class="fa fa-home text-white"></i> <span>Boleta de Servicios</span></a></li> 
       @endif
       
 

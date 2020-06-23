@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use DB;
+use App\Modelo\FichaCliente;
 
 class ProcedimientosController extends Controller
 {
@@ -21,11 +22,17 @@ class ProcedimientosController extends Controller
     }
 
     public function proceBuscarCliente($id){
+        // return $id;
         // proce_buscar_cliente
-        $cliente = DB::select(
-            "call proce_buscar_cliente($id)"
-        );
-        return $cliente;
+        try {
+            $model = new FichaCliente();
+            $cliente = $model->hydrate(
+                DB::select("call proce_buscar_cliente($id)")
+            );
+            return $cliente[0]->nombre_completo();
+        } catch (\Throwable $th) {
+            return $th;
+        }
     }
     
     public function proceBoletaServicios(){
