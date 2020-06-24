@@ -12,7 +12,7 @@ class ProveedorSolicitudController extends Controller
     public function index()
     {
         $ordenes = OrdenEmpleado::where('id_ficha_proveedor', auth('proveedor')->user()->id_ficha_proveedor )
-                                ->where('enviado',2)
+                                ->where('enviado',1)
                                 ->get();
         return view('proveedor.index',compact('ordenes'));
     }

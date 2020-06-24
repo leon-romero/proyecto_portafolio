@@ -66,7 +66,7 @@ Route::get('historiaCliente','ReservarHoraController@show')->name('tomadehora.sh
 
 
 Route::group(['middleware' => 'acceso.odontologo'], function() {   
-    Route::get('consultas','AtencionPaciesnteController@index')->name('atencion.index');
+    Route::get('consultas','AtencionPacienteController@index')->name('atencion.index');
     Route::get('consultas/{id}','AtencionPacienteController@show')->name('atencion.show');
     Route::put('consultas/{id}','ReservarHoraController@update')->name('atencion.update');
     
