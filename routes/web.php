@@ -30,6 +30,11 @@ Route::group(['middleware' => 'acceso.empleado'], function() {
     Route::resource('empleado','EmpleadoController');
     Route::resource('odontologo','OdontologoController');
     Route::resource('servicio','ServicioController');
+    Route::get('servicio/{id}/producto','ServicioController@producto')->name('servicio.producto');
+    Route::post('servicio/{id}/producto','ServicioController@productoStore')->name('servicio.productoStore');
+    Route::get('servicio/{id}/producto/{id_prod}','ServicioController@productoDelete')->name('servicio.productoDelete');
+    Route::post('servicio/{id}/producto/{id_prod}','ServicioController@productoUpdate')->name('servicio.productoUpdate');
+
     Route::resource('producto','ProductoController');
     Route::get('monitoreo','MonitoreoController@index')->name('monitoreo.index');
     Route::get('monitoreo/solicitud','MonitoreoController@solicitudes')->name('monitoreo.solicitudes');
