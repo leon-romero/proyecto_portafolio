@@ -32,11 +32,10 @@
               <tr>
                 <th>#</th>
                 <th>Fecha Realizado</th>
-                <th>Cliente</th>
-                <th>Odontologo</th>
+                <th>Horario</th>
                 <th>Servicio</th>
-                <th></th>
-                <th></th>
+                <th>Cliente</th>
+                <th>Odontólogo</th>
               </tr>
             </thead>
 
@@ -54,17 +53,12 @@
 
 									@endphp
 									<tr class="{{ $text_color }} {{ $bg_color }}">
-										<td class="">{{ $b->id_boleta_servicio }}</td>							
+										<td class="">	<a href="{{ route('boletas.show',$b->id_boleta_servicio) }}">BOLETA-{{ $b->id_boleta_servicio }}</a></td>							
 										<td>{{ $proxima_fecha }}</td>						
 										<td>{{ $b->horario }}</td>
-								
+										<td>{{ $b->nombre_servicio }}</td>
 										<td>{{ $b->nombre_cliente }}</td>
 										<td>{{ $b->nombre_odontologo }}</td>
-										<td>{{ $b->nombre_servicio }}</td>
-							
-										<td>										
-											<a href="{{ route('boletas.show',$b->id_boleta_servicio) }}" class="btn btn-info"><i class="fas fa-eye"></i> Ver</a>										
-										</td>
 									</tr>
 									@endforeach
 
