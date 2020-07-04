@@ -66,7 +66,7 @@
                 </div>
             </div>
             <div class="box-footer">	
-                <a href="{{ route('monitoreo.solicitudes') }}" class="btn btn-danger">Volver</a>
+                <a href="/boleta" class="btn btn-danger">Volver</a>
             </div>
         </div>
     </div>			
