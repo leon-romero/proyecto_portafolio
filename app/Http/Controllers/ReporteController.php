@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Modelo\BoletaServicio;
+
 
 
 class ReporteController extends Controller
@@ -17,6 +17,8 @@ class ReporteController extends Controller
         // cantidad de personas mes
 
         // numero de atencion por odontologo
+        $boletas = new BoletaServicio();
 
+        return view('admin.reporte.index');
     }
 }
