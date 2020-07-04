@@ -15,26 +15,17 @@
     @include('layout.alerta')
     {{-- Alerta de mensaje --}}
 
-    <div class="col-md-12">
+    <div class="col-md-6">
       <div class="box">
         <div class="box-header">
-          <h3 class="box-title">Todos los Servicios</h3>
-        </div>
-        <div class="col-md-12 text-center">
-          <a href="{{ route('servicio.create')}}" class="btn btn-success btn-sm">
-            {{-- <i class="fa fa-user-plus"></i> --}}
-            Nuevo Servicio</a>
-        </div>
-        <br>
-        <br>
-        <!-- /.box-header -->
+          {{-- <h3 class="box-title">Todos los Servicios</h3> --}}
+        </div>       
         <div class="box-body table-responsive">
-          <table id="tabla" class="datatable table table-striped table-sm " cellspacing="0" width="100%">
+          <table class="datatable table table-striped table-sm " cellspacing="0" width="100%">
             <thead>
               <tr>
-                {{-- <th>#</th> --}}
-                {{-- <th></th> --}}
                 <th>Nombre</th>
+                <th></th>
                 <th></th>
               </tr>
             </thead>
@@ -44,19 +35,13 @@
                   $i=1;
               @endphp  
               @foreach ($servicios as $s)
-                <tr>
-                  {{-- <td>{{ $i++ }}</td> --}}
-                  {{-- <td>
-                    @if ($s->mostrar==1)
-                        activado
-                    @else
-                        desactivado
-                    @endif
-                  </td> --}}
-                
+                <tr> 
                   <td>{{ $s->nombre_servicio }}</td>
                   <td>
-                    <a href="{{ route('servicio.edit',$s->id_servicio) }}" class="btn btn-info btn-sm">editar <i class="fa fa-edit"></i></a>
+                    <a href="{{ route('servicio.edit',$s->id_servicio) }}" class="btn btn-info btn-sm">Editar</a>
+                  </td>
+                  <td>
+                    <a href="{{ route('servicio.producto',$s->id_servicio) }}" class="btn btn-success btn-sm">Agregar Producto</a>
                   </td>
                 </tr>
                 @endforeach

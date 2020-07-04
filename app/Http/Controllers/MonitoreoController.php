@@ -111,22 +111,30 @@ class MonitoreoController extends Controller
                 $orden->save();
     
                 $listado = $request->input('id_producto');
-                
+
+                $estado = false;
 
                 foreach ($listado as $l) {
                     $n = "cantidad" . $l;
                     $cantidad = $request->input($n);
-
-                    $detalle = new DetalleOrden();
-                    $detalle->id_orden_empleado = $orden->id_orden_empleado;
-                    $detalle->id_producto = (int)$l;
-                    $detalle->cantidad = (int)$cantidad;
-                    $detalle->cantidad_recibida = 0;
-                    $detalle->entregado = 0;
-                    $detalle->save();            
+                    
+                    if($cantidad>0){
+                        $detalle = new DetalleOrden();
+                        $detalle->id_orden_empleado = $orden->id_orden_empleado;
+                        $detalle->id_producto = (int)$l;
+                        $detalle->cantidad = (int)$cantidad;
+                        $detalle->cantidad_recibida = 0;
+                        $detalle->entregado = 0;
+                        $detalle->save();
+                        $estado = true; 
+                    }
                 }
-    
-                return back()->with('success','Se ha generado la orden código ' . $orden->codigo . "."); 
+                if ($estado) {
+                    return back()->with('success','Se ha generado la orden código ' . $orden->codigo . "."); 
+                }else{
+                    $orden->delete();
+                    return back()->with('info','Error agrege productos.'); 
+                }
             }else{
                 return back()->with('info','Error intente nuevamente.'); 
             }

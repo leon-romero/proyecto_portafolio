@@ -79,26 +79,12 @@
         </ul>
       </li>
 
-     
-      
-      <li class="treeview {{ activar('paciente*') }}{{ activar('odontologo*') }}{{ activar('empleado*') }}{{ activar('proveedor*') }}">
-        <a>
-          <i class="fa fa-users"></i> <span>Reportes</span>
-          <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-          </span>
-        </a>
-        <ul class="treeview-menu">           
-          <li class="{{ activar('paciente*') }}"><a href="{{ route('paciente.index') }}"><i class="fas fa-user-astronaut"></i> Boleta de Servicios</a></li>
-        </ul>
-      </li>
-
       @endif
 
       @if (auth('cliente')->check())
       <li class="header">Vista Cliente</li>
-      <li><a href="{{route('tomadehora.create')}}"><i class="fa fa-clock text-white"></i> <span>Toma de Hora</span></a></li>   
-      <li><a href="{{route('tomadehora.show')}}"><i class="fa fa-home text-white"></i> <span>Historial</span></a></li> 
+      <li class="{{ activar('tomadehora*') }}"><a href="{{route('tomadehora.create')}}"><i class="fa fa-clock text-white"></i> <span>Toma de Hora</span></a></li>   
+      <li class="{{ activar('historiaCliente*') }}"><a href="{{route('tomadehora.show')}}"><i class="fa fa-home text-white"></i> <span>Historial</span></a></li> 
       @endif
       
 
@@ -112,9 +98,9 @@
 
       @if (auth('empleado')->check())
       <li class="header">Vista Empleado</li>
-      <li><a href="{{route('monitoreo.index')}}"><i class="fa fa-clock text-white"></i> <span>Monitoreo de Productos</span></a></li>   
-      <li><a href="{{route('monitoreo.solicitudes')}}"><i class="fa fa-home text-white"></i> <span>Solicitud de Productos</span></a></li>
-      <li><a href="{{route('boleta.index')}}"><i class="fa fa-home text-white"></i> <span>Boleta de Servicios</span></a></li> 
+      <li class="{{ activar('monitoreo') }}"><a href="{{route('monitoreo.index')}}"><i class="fa fa-clock text-white"></i> <span>Monitoreo de Productos</span></a></li>   
+      <li class="{{ activar('monitoreo/solicitud') }}"><a href="{{route('monitoreo.solicitudes')}}"><i class="fa fa-home text-white"></i> <span>Solicitud de Productos</span></a></li>
+      <li class="{{ activar('boleta*') }}"><a href="{{route('boleta.index')}}"><i class="fa fa-home text-white"></i> <span>Boleta de Servicios</span></a></li> 
       @endif
       
 
