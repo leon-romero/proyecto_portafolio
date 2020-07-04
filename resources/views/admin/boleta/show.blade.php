@@ -88,12 +88,5 @@
   }
 </script>
 <script src="/dist/js/excel.js"></script>
-<script>
-    function tableToExcel(table,nombre) {           
-      var doc = new excel();      
-      doc.autoTable({html: `#${table}`});    
-      doc.save( nombre+'.xlsx');      
-  }
-</script>
 
 @stop
