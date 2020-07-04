@@ -20,20 +20,22 @@
     <div class="col-md-6">
         <div class="box">
             <div class="box-header">
+                <h3 class="box-title">Todos los productos</h3>
+                <br>
+                <br>
+                <button type="button" class="btn btn-danger  float-right btn-sm" onclick="descargarPDF('tabla','Reporte')"> <i class="fa fa-file-pdf"></i> Descargar PDF </button>
+                <button type="button" class="btn btn-success float-right btn-sm mr-2" onclick="tableToExcel('tabla','ReporteExcel')"><i class="fa fa-file-excel"></i> Descargar Excel</button>      
+              </div>
+              <br>
+              <br>
+            <div class="box-header">
                 <div class="d-flex align-items-center">
                     <h4 class="card-title">Detalle Orden</h4>
                 </div>
             </div>
             <div class="box-body">
-                <table class="display table table-striped table-hover table-bordered table-sm" cellspacing="0" width="100%">
-                    <tbody>
-                    
-                    </tbody>			
-                </table>
-            </div>
-            <div class="box-body">
                 <div class="table-responsive">
-                    <table class="display table table-striped table-hover table-bordered table-sm" cellspacing="0" width="100%">   
+                    <table id="tabla" class="display table table-striped table-hover table-bordered table-sm" cellspacing="0" width="100%">   
                         <tbody>
                             <tr>
                                 <td>N° Boleta {{ $b->id_boleta_servicio }}</td>
@@ -72,5 +74,26 @@
     </div>			
 </div>
 </section>
+
 @stop
 
+@section('scripts')
+<script src="/bower_components/jspdf/js/jspdf.min.js"></script>
+<script src="/bower_components/jspdf/js/jspdf.plugin.autotable.js"></script>
+<script>
+  function descargarPDF(table,nombre) {           
+      var doc = new jsPDF();      
+      doc.autoTable({html: `#${table}`});    
+      doc.save( nombre+'.pdf');      
+  }
+</script>
+<script src="/dist/js/excel.js"></script>
+<script>
+    function tableToExcel(table,nombre) {           
+      var doc = new excel();      
+      doc.autoTable({html: `#${table}`});    
+      doc.save( nombre+'.xlsx');      
+  }
+</script>
+
+@stop
