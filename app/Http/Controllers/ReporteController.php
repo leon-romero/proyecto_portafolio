@@ -32,7 +32,7 @@ class ReporteController extends Controller
         // total de solicitudes -- esperas - recibidas
         $esperas =   OrdenEmpleado::where('enviado',2)->count();
         $recibidas = OrdenEmpleado::where('enviado',1)->count(); 
-        $total_solicituces = array('esperas' => $esperas, 'recibidas' => $recibidas);
+        $total_solicitudes = array('esperas' => $esperas, 'recibidas' => $recibidas);
 
         // total de boletas
         $total_boletas  = BoletaServicio::count();
@@ -46,7 +46,7 @@ class ReporteController extends Controller
               'total_atencion_odontologo',
               'total_atenciones',
               'total_personal',
-              'total_solicituces',
+              'total_solicitudes',
             ];
 
         $resultado = compact($r);    

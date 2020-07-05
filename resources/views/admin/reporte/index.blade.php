@@ -5,87 +5,85 @@
 @section('contenido')
   <section class="content-header">
     <h1>Reportes Generales</h1>
-
-    <div>
-
-      <p>DATOS</p>
-
-     
-      <p>  @json($total_atencion_odontologo)</p>
-
-    </div>
   </section>
   <section class="content">
     <div class="row">
       <div class="col-md-3 col-sm-6 col-xs-12">
         <div class="info-box">
-          <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
-
+          <span class="info-box-icon bg-white"><i class="fas fa-user-astronaut"></i></span>
           <div class="info-box-content">
             <span class="info-box-text">Clientes</span>
             <span class="info-box-number">{{$total_personal['clientes']}}<small></small></span>
           </div>
-          <!-- /.info-box-content -->
         </div>
-        <!-- /.info-box -->
       </div>
-      <!-- /.col -->
       <div class="col-md-3 col-sm-6 col-xs-12">
         <div class="info-box">
-          <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
+          <span class="info-box-icon bg-purple"><i class="fas fa-tooth"></i></span>
 
           <div class="info-box-content">
-            <span class="info-box-text">Odontologos</span>
+            <span class="info-box-text">Odontólogos</span>
             <span class="info-box-number">{{$total_personal['odontologos']}}</span>
           </div>
-          <!-- /.info-box-content -->
         </div>
-        <!-- /.info-box -->
       </div>
-      <!-- /.col -->
 
-      <!-- fix for small devices only -->
       <div class="clearfix visible-sm-block"></div>
-
       <div class="col-md-3 col-sm-6 col-xs-12">
         <div class="info-box">
-          <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
-
+          <span class="info-box-icon bg-green"><i class="far fa-address-card"></i></span>
           <div class="info-box-content">
             <span class="info-box-text">Empleados</span>
             <span class="info-box-number">{{$total_personal['empleados']}}</span>
           </div>
-          <!-- /.info-box-content -->
         </div>
-        <!-- /.info-box -->
       </div>
-      <!-- /.col -->
+
       <div class="col-md-3 col-sm-6 col-xs-12">
         <div class="info-box">
-          <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
+          <span class="info-box-icon bg-yellow"><i class="fas fa-address-book"></i></span>
 
           <div class="info-box-content">
             <span class="info-box-text">Proveedores</span>
             <span class="info-box-number">{{$total_personal['proveedores']}}</span>
           </div>
-          <!-- /.info-box-content -->
         </div>
-        <!-- /.info-box -->
       </div>
-      <!-- /.col -->
     </div>
+
     <div class="row">
       <div class="col-md-6">
-        
+        <div class="box">
+          <div class="box-header">
+            <h3 class="box-title">Total de Atenciones</h3>
+          </div>
+          <div class="box-body">
+            <div id="canvas-holder">
+              <canvas id="bar-atenciones" width="800" height="450"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
         <div class="box">
           <div class="box-header">
             <h3 class="box-title">Todos los productos</h3>
-            <h1>total de boletas {{ $total_boletas }}</h1>
           </div>
-
           <div class="box-body">
             <div id="canvas-holder">
-              <canvas id="bar-chart" width="800" height="450"></canvas>
+              <canvas id="bar-odontologo" width="800" height="450"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="box">
+          <div class="box-header">
+            <h3 class="box-title">Todas las Solicitudes</h3>
+          </div>
+          <div class="box-body">
+            <div id="canvas-holder">
+              <canvas id="bar-solicitud" width="800" height="450"></canvas>
             </div>
           </div>
         </div>
@@ -97,17 +95,33 @@
 @section('scripts')
 <script>
   
-  let total_atencion_odontologo  = @JSON($total_atencion_odontologo);
-  
-  new Chart(document.getElementById("bar-chart"), {
+  // total de atencion odontologo
+  new Chart(document.getElementById("bar-odontologo"), {
     type: 'bar',
     data: {
-      labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+      labels: [
+        
+        @foreach ($total_atencion_odontologo as $k)
+          @foreach ($k as $key => $value)
+            @if($key == 'nombre_completo')
+              '{{ $value }}',
+            @endif
+          @endforeach
+        @endforeach
+      ],
       datasets: [
         {
-          label: "Population (millions)",
+          label: "Total de atención odontologo",
           backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-          data: [2478,5267,734,784,433]
+          data: [
+            @foreach ($total_atencion_odontologo as $k)
+              @foreach ($k as $key => $value)
+                @if($key == 'total')
+                  '{{ $value }}',
+                @endif
+              @endforeach
+            @endforeach
+          ]
         }
       ]
     },
@@ -115,12 +129,54 @@
       legend: { display: false },
       title: {
         display: true,
+        text: 'Total de atenciones de los odontologos'
+      }
+    }
+  });
+    
+  // atenciones
+  new Chart(document.getElementById("bar-atenciones"), {
+    type: 'pie',
+    data: {
+      labels: ["En Espera","Canceladas","Realizadas"],
+      datasets: [{
+        label: "Population (millions)",
+        backgroundColor: ["#3e95cd", "#c45850", "#3cba9f"],
+        data: [{{$total_atenciones['espera']}},{{$total_atenciones['canceladas']}},{{$total_atenciones['realizadas']}}]
+      }]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Total de Atenciones'
+      }
+    }
+  });
+  //solicitudes
+  new Chart(document.getElementById("bar-solicitud"), {
+    type: 'pie',
+    data: {
+      labels: ["En Espera", "Recibidas"],
+      datasets: [
+        {
+          label: "Population (millions)",
+          backgroundColor: ["#3e95cd", "#8e5ea2"],
+          data: ['{{$total_solicitudes['esperas']}}', '{{$total_solicitudes['recibidas']}}']
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
         text: 'Predicted world population (millions) in 2050'
       }
     }
-});
-    
+  });
+
 </script>
+
+
+
 @stop
 
 
