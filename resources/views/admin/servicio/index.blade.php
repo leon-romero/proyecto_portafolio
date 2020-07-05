@@ -19,7 +19,12 @@
       <div class="box">
         <div class="box-header">
           {{-- <h3 class="box-title">Todos los Servicios</h3> --}}
-        </div>       
+        </div>
+        <div class="col-md-12 text-center">
+          <a href="{{ route('servicio.create')}}" class="btn btn-success btn-sm">Nuevo servicio</a>
+        </div>
+        <br>
+        <br>       
         <div class="box-body table-responsive">
           <table class="datatable table table-striped table-sm " cellspacing="0" width="100%">
             <thead>

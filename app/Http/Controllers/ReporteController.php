@@ -38,7 +38,7 @@ class ReporteController extends Controller
         $total_boletas  = BoletaServicio::count();
         
         //SELECT COUNT(*) AS total, id_odontologo FROM boleta_servicio GROUP BY id_odontologo;
-        $total_atencion_odontologo = DB::select("SELECT COUNT(*) AS total, id_odontologo, CONCAT(CONCAT(odon.nombres,''),odon.apellidos) as nombre_completo FROM boleta_servicio bos JOIN odontologo odon using(id_odontologo) GROUP BY bos.id_odontologo");
+        $total_atencion_odontologo = DB::select("SELECT COUNT(*) AS total, id_odontologo, CONCAT(CONCAT(odon.nombres,' '),odon.apellidos) as nombre_completo FROM boleta_servicio bos JOIN odontologo odon using(id_odontologo) GROUP BY bos.id_odontologo");
 
         
 

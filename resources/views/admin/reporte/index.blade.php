@@ -49,13 +49,23 @@
           </div>
         </div>
       </div>
+      <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box">
+          <span class="info-box-icon bg-green"><i class="fas fa-file"></i></span>
+
+          <div class="info-box-content">
+            <span class="info-box-text">Boletas emitidas</span>
+            <span class="info-box-number">{{$total_boletas}}</span>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="row">
       <div class="col-md-6">
         <div class="box">
           <div class="box-header">
-            <h3 class="box-title">Total de Atenciones</h3>
+            <h3 class="box-title">Resumen de atenciones</h3>
           </div>
           <div class="box-body">
             <div id="canvas-holder">
@@ -67,7 +77,7 @@
       <div class="col-md-6">
         <div class="box">
           <div class="box-header">
-            <h3 class="box-title">Todos los productos</h3>
+            <h3 class="box-title">Total de personas atendidas por los odontólogos</h3>
           </div>
           <div class="box-body">
             <div id="canvas-holder">
@@ -79,7 +89,7 @@
       <div class="col-md-6">
         <div class="box">
           <div class="box-header">
-            <h3 class="box-title">Todas las Solicitudes</h3>
+            <h3 class="box-title">Resumen de solicitudes a los proveedores</h3>
           </div>
           <div class="box-body">
             <div id="canvas-holder">
@@ -97,7 +107,7 @@
   
   // total de atencion odontologo
   new Chart(document.getElementById("bar-odontologo"), {
-    type: 'bar',
+    type: 'pie',
     data: {
       labels: [
         
@@ -126,7 +136,6 @@
       ]
     },
     options: {
-      legend: { display: false },
       title: {
         display: true,
         text: 'Total de atenciones de los odontologos'

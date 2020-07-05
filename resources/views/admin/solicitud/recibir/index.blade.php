@@ -71,7 +71,7 @@
 
                         <div class="box-footer">	
                             <a href="{{ route('monitoreo.solicitudes') }}" class="btn btn-danger">Volver</a>
-                            <button type="submit" class="btn btn-success pull-right">Crear solicitud</button>
+                            <button type="submit" class="btn btn-success pull-right">Recibir</button>
                         </div>
                     </form>
                 </div>
