@@ -99,8 +99,10 @@
       @if (auth('empleado')->check())
       <li class="header">Vista Empleado</li>
       <li class="{{ activar('monitoreo') }}"><a href="{{route('monitoreo.index')}}"><i class="fa fa-clock text-white"></i> <span>Monitoreo de Productos</span></a></li>   
-      <li class="{{ activar('monitoreo/solicitud') }}"><a href="{{route('monitoreo.solicitudes')}}"><i class="fa fa-home text-white"></i> <span>Solicitud de Productos</span></a></li>
-      <li class="{{ activar('boleta*') }}"><a href="{{route('boleta.index')}}"><i class="fa fa-home text-white"></i> <span>Boleta de Servicios</span></a></li> 
+      <li class="{{ activar('monitoreo/solicitud') }}"><a href="{{route('monitoreo.solicitudes')}}"><i class="fa fa-truck text-white"></i> <span>Solicitud de Productos</span></a></li>
+      <li class="{{ activar('boleta*') }}"><a href="{{route('boleta.index')}}"><i class="fa fa-file text-white"></i> <span>Boleta de Servicios</span></a></li> 
+      <li class="{{ activar('reportes*') }}"><a href="{{route('reporte.index')}}"><i class="fa fa-bar-chart text-white"></i> <span>Reportes</span></a></li> 
+      
       @endif
       
 
