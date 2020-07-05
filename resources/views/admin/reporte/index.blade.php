@@ -22,7 +22,7 @@
           <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
 
           <div class="info-box-content">
-            <span class="info-box-text">.Clientes</span>
+            <span class="info-box-text">Clientes</span>
             <span class="info-box-number">{{$total_personal['clientes']}}<small></small></span>
           </div>
           <!-- /.info-box-content -->
