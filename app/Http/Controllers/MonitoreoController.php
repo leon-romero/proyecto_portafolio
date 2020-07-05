@@ -93,7 +93,7 @@ class MonitoreoController extends Controller
         
             }
             // return "genial";
-            return back()->with('success','Se ha generado la orden código ' . $orden->codigo . "."); 
+            return back()->with('success','Recibido'); 
 
         } catch (\Throwable $th) {
             return $th;
