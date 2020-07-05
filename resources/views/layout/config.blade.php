@@ -109,8 +109,8 @@
       @if (auth('proveedor')->check())
       
       <li class="header">Vista Proveedor</li>
-      <li><a href="{{ route('proveedor.solicitudes') }}"><i class="fa fa-clock text-white"></i> <span>Solicitudes</span></a></li>   
-      <li><a href="/home"><i class="fa fa-home text-white"></i> <span>Historial de solicitudes</span></a></li> 
+      <li class="{{ activar('pro/solicitudes*') }}"><a href="{{ route('proveedor.solicitudes') }}"><i class="fa fa-clock text-white"></i> <span>Solicitudes</span></a></li>   
+      <li class="{{ activar('pro/realizadas*') }}"><a href="{{  route('proveedor.solicitudes.realizadas') }}"><i class="fa fa-home text-white"></i> <span>Solicitudes Realizadas</span></a></li> 
       
 
       

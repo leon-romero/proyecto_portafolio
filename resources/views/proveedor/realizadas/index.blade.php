@@ -22,8 +22,10 @@
             <thead>
               <tr>
                 <th>Fecha Solicitud</th>
+                <th>Fecha Recepción</th>
                 <th>Código</th>
                 <th>Empleado Solicitante</th>
+                <th>Empleado Recepción</th>
                 <th></th>
               </tr>
             </thead>
@@ -32,10 +34,12 @@
               @foreach ($ordenes as $or)
                 <tr>
                   <td>{{ $or->fecha_texto() }}</td>
+                  <td>{{ $or->fecha_recepcion() }}</td>
                   <td>{{ $or->codigo }}</td>
                   <td>{{ $or->empleado->nombre_completo() }}</td>
+                  <td>{{ $or->empleado_r->nombre_completo() }}</td>
                   <td>
-                    <a href="{{ route('proveedor.solicitudes.show',$or->id_orden_empleado) }}" class="btn btn-info btn-sm"> Detalle</a>
+                    <a href="{{ route('proveedor.solicitudes.detalles',$or->id_orden_empleado) }}" class="btn btn-info btn-sm"> Detalle</a>
                   </td>
                 </tr>
                 @endforeach
