@@ -2,7 +2,7 @@
 
 @section('contenido')
 <section class="content-header">
-  <h1>Lista de productos</h1>
+  <h1>Monitoreo</h1>
   {{-- <ol class="breadcrumb"> --}}
     {{-- <li><a href=""><i class="fa fa-home"></i> Home</a></li> --}}
     {{-- <li class="active">Clientes</li> --}}
@@ -18,7 +18,7 @@
     <div class="col-md-12">
       <div class="box">
         <div class="box-header">
-          <h3 class="box-title">Todos los productos</h3>
+          <h3 class="box-title"></h3>
         </div>
         <br>
         <br>
